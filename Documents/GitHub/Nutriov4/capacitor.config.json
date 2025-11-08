@@ -1,0 +1,17 @@
+{
+  "appId": "com.nutrio.app",
+  "appName": "Nutrio",
+  "webDir": "dist",
+  "server": {
+    "androidScheme": "https"
+  },
+  "plugins": {
+    "StatusBar": {
+      "style": "light",
+      "backgroundColor": "#1a1a1a"
+    },
+    "Keyboard": {
+      "resize": "native"
+    }
+  }
+}
