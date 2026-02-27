@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Nutrio+ | Nutrition & Fitness Tracking</title>
+    <meta name="description" content="Nutrio+ landing page." />
+    <link rel="icon" type="image/png" href="public/nutri-app-icon.png" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <div class="brand">
+          <img src="public/nutri-app-icon.png" alt="Nutrio+" class="brand-mark" />
+          <div>
+            <div class="brand-name">Nutrio+</div>
+            <div class="brand-tag">Health &amp; Fitness</div>
+          </div>
+        </div>
+        <nav class="nav">
+          <a href="#features">Features</a>
+          <a href="#steps">Steps</a>
+          <a href="#why">Why</a>
+          <a href="/privacy">Privacy</a>
+          <a href="#download" class="nav-cta">Download on iOS</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero hero-animate">
+        <div class="container hero-grid">
+          <div>
+            <p class="eyebrow">Health &amp; Fitness</p>
+            <h1>AI meal analysis, meal planning, and fitness tracking in one app.</h1>
+            <p class="lead">Log meals in seconds, plan the week, track workouts, and see progress in one place.</p>
+            <div class="hero-actions" id="download">
+              <a class="button primary" href="https://apps.apple.com/app/id0000000000" target="_blank" rel="noreferrer">Download on iOS</a>
+              <a class="button ghost" href="#features">View features</a>
+            </div>
+          </div>
+          <div class="hero-media">
+            <div class="nutri-character" id="nutri" title="Click me!">
+              <div class="nutri-body">
+                <!-- Nutri SVG Character -->
+                <svg viewBox="0 0 200 200" class="nutri-svg">
+                  <!-- Body (circle) -->
+                  <circle cx="100" cy="110" r="70" fill="#7fc7a1" class="nutri-bounce"/>
+                  <!-- Shine -->
+                  <ellipse cx="75" cy="85" rx="20" ry="12" fill="rgba(255,255,255,0.3)" transform="rotate(-30 75 85)"/>
+                  <!-- Left Eye -->
+                  <g class="nutri-eye left">
+                    <circle cx="75" cy="105" r="12" fill="#0f172a"/>
+                    <circle cx="78" cy="102" r="4" fill="#fff"/>
+                  </g>
+                  <!-- Right Eye -->
+                  <g class="nutri-eye right" id="rightEye">
+                    <circle cx="125" cy="105" r="12" fill="#0f172a"/>
+                    <circle cx="128" cy="102" r="4" fill="#fff"/>
+                    <!-- Wink eyelid (hidden by default) -->
+                    <path class="wink-lid" d="M 113 105 Q 125 115 137 105" stroke="#0f172a" stroke-width="3" fill="none" opacity="0"/>
+                  </g>
+                  <!-- Cheeks -->
+                  <circle cx="60" cy="125" r="8" fill="rgba(255,150,150,0.4)"/>
+                  <circle cx="140" cy="125" r="8" fill="rgba(255,150,150,0.4)"/>
+                  <!-- Mouth -->
+                  <path d="M 85 130 Q 100 145 115 130" stroke="#0f172a" stroke-width="3" fill="none" stroke-linecap="round"/>
+                  <!-- Leaf on head -->
+                  <ellipse cx="100" cy="35" rx="15" ry="25" fill="#39785b" transform="rotate(-10 100 35)"/>
+                  <ellipse cx="100" cy="35" rx="8" ry="18" fill="#7fc7a1" transform="rotate(-10 100 35)"/>
+                </svg>
+              </div>
+              <div class="nutri-shadow"></div>
+              <p class="nutri-hint">Tap me!</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="features" class="section reveal">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Features</p>
+              <h2>Everything you need to stay consistent.</h2>
+            </div>
+            <p class="lead-small">Browse by category.</p>
+          </div>
+          <div class="feature-panel">
+            <div class="feature-tabs" role="tablist" aria-label="Feature categories">
+              <button class="tab active" data-tab="log" aria-selected="true" type="button">Log</button>
+              <button class="tab" data-tab="plan" aria-selected="false" type="button">Plan</button>
+              <button class="tab" data-tab="train" aria-selected="false" type="button">Train</button>
+              <button class="tab" data-tab="track" aria-selected="false" type="button">Track</button>
+            </div>
+            <div class="feature-groups">
+              <div class="feature-group active" data-group="log">
+                <div class="feature-card">
+                  <h3>AI meal analysis</h3>
+                  <p>Gemini-powered meal photo analysis and AI meal generation.</p>
+                </div>
+                <div class="feature-card">
+                  <h3>Barcode scanning</h3>
+                  <p>Barcode scanner with food lookup and search.</p>
+                </div>
+                <div class="feature-card">
+                  <h3>Account access</h3>
+                  <p>Sign in, reset passwords, and sync your profile.</p>
+                </div>
+              </div>
+              <div class="feature-group" data-group="plan">
+                <div class="feature-card">
+                  <h3>Meal planning</h3>
+                  <p>Weekly meal planner, meal templates, and recipes.</p>
+                </div>
+                <div class="feature-card">
+                  <h3>AI meal generation</h3>
+                  <p>Generate meal ideas and plans with AI support.</p>
+                </div>
+                <div class="feature-card">
+                  <h3>Templates</h3>
+                  <p>Save and reuse your best meal setups.</p>
+                </div>
+              </div>
+              <div class="feature-group" data-group="train">
+                <div class="feature-card">
+                  <h3>Fitness tracking</h3>
+                  <p>Workout logging, exercise library, and personal records.</p>
+                </div>
+                <div class="feature-card">
+                  <h3>Workout calendar</h3>
+                  <p>Plan sessions and review training history.</p>
+                </div>
+                <div class="feature-card">
+                  <h3>Progress history</h3>
+                  <p>Track changes over time.</p>
+                </div>
+              </div>
+              <div class="feature-group" data-group="track">
+                <div class="feature-card">
+                  <h3>Analytics &amp; goals</h3>
+                  <p>Nutrition analytics, goal tracking, achievements, and streaks.</p>
+                </div>
+                <div class="feature-card">
+                  <h3>Reports</h3>
+                  <p>Summaries of progress and trends.</p>
+                </div>
+                <div class="feature-card">
+                  <h3>Notifications</h3>
+                  <p>Stay consistent with reminders.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="steps" class="section section-alt reveal">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Steps</p>
+              <h2>Three steps to log a meal.</h2>
+            </div>
+            <p class="lead-small">Capture, analyze, and review.</p>
+          </div>
+          <div class="steps-timeline">
+            <div class="step-row">
+              <div class="step-token">01</div>
+              <div class="step-content">
+                <h3>Scan your meal</h3>
+                <p>Let Nutri look at your meal or barcode. Use manual only if needed.</p>
+              </div>
+            </div>
+            <div class="step-row">
+              <div class="step-token">02</div>
+              <div class="step-content">
+                <h3>Analyze nutrition</h3>
+                <p>AI meal analysis for nutrition estimates.</p>
+              </div>
+            </div>
+            <div class="step-row">
+              <div class="step-token">03</div>
+              <div class="step-content">
+                <h3>Review progress</h3>
+                <p>Daily totals and goals update in analytics.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="why" class="section reveal">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Why</p>
+              <h2>Why this was built.</h2>
+            </div>
+          </div>
+          <div class="why-swipe">
+            <div class="why-slide hint">
+              <p>Swipe to read why I built this</p>
+              <span class="swipe-arrow">→</span>
+            </div>
+            <div class="why-slide">
+              <p>
+                I&apos;m 17. I got into fitness and tried every app going — they all felt like a
+                <s>chore</s>. <s>Overpriced subscriptions</s>, boring interfaces, nothing that made
+                me want to stick with it. So I built my own app with achievements to unlock, levels
+                to grind, streaks to keep you consistent, and Nutri to keep you consistent while you
+                build your health &amp; fitness journey. The app I wished existed. Built different, on
+                purpose.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-cta reveal">
+        <div class="container cta">
+          <div>
+            <h2>Download Nutrio+ on iOS.</h2>
+            <p>Track meals, workouts, and progress in one app.</p>
+          </div>
+          <a class="button light" href="https://apps.apple.com/app/id0000000000" target="_blank" rel="noreferrer">Download on iOS</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div>
+          <div class="brand-name">Nutrio+</div>
+          <p class="note">Nutrition and fitness tracking.</p>
+        </div>
+        <div class="footer-links">
+          <a href="#features">Features</a>
+          <a href="#steps">Steps</a>
+          <a href="#why">Why</a>
+          <a href="/privacy">Privacy</a>
+          <a href="/terms">Terms</a>
+          <a href="/cookies">Cookies</a>
+        </div>
+      </div>
+      <div class="container footer-bottom">© 2026 Nutrio+.</div>
+    </footer>
+    <script>
+      // Nutri character wink interaction
+      const nutri = document.getElementById('nutri');
+      const rightEye = document.getElementById('rightEye');
+      let isWinking = false;
+
+      if (nutri && rightEye) {
+        nutri.addEventListener('click', () => {
+          if (isWinking) return;
+          isWinking = true;
+          rightEye.classList.add('winking');
+          
+          // Play a little bounce animation
+          nutri.style.transform = 'scale(0.95)';
+          setTimeout(() => {
+            nutri.style.transform = '';
+          }, 100);
+          
+          // Remove wink after 400ms
+          setTimeout(() => {
+            rightEye.classList.remove('winking');
+            isWinking = false;
+          }, 400);
+        });
+      }
+
+      const tabs = document.querySelectorAll('.feature-tabs .tab');
+      const groups = document.querySelectorAll('.feature-group');
+
+      tabs.forEach((tab) => {
+        tab.addEventListener('click', () => {
+          const key = tab.dataset.tab;
+          tabs.forEach((t) => {
+            t.classList.remove('active');
+            t.setAttribute('aria-selected', 'false');
+          });
+          tab.classList.add('active');
+          tab.setAttribute('aria-selected', 'true');
+
+          groups.forEach((group) => {
+            group.classList.toggle('active', group.dataset.group === key);
+          });
+
+          const activeGroup = document.querySelector('.feature-group.active');
+          if (activeGroup) {
+            activeGroup.classList.remove('fade-in');
+            void activeGroup.offsetWidth;
+            activeGroup.classList.add('fade-in');
+          }
+        });
+      });
+
+      const anchorLinks = document.querySelectorAll('a[href^="#"]');
+      anchorLinks.forEach((link) => {
+        link.addEventListener('click', (event) => {
+          const targetId = link.getAttribute('href');
+          const target = document.querySelector(targetId);
+          if (!target) return;
+          event.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          target.classList.add('section-glide');
+          setTimeout(() => target.classList.remove('section-glide'), 700);
+        });
+      });
+    </script>
+  </body>
+</html>
