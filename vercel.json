@@ -1,10 +1,4 @@
 {
   "version": 2,
-  "name": "n-website",
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/$1"
-    }
-  ]
+  "name": "n-website"
 }
