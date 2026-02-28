@@ -309,12 +309,13 @@ h2 {
 /* Nutri Character Styles */
 .nutri-character {
   position: relative;
-  width: min(320px, 80vw);
+  width: min(280px, 70vw);
   display: flex;
   flex-direction: column;
   align-items: center;
   cursor: pointer;
   user-select: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .nutri-body {
@@ -332,31 +333,11 @@ h2 {
   transform: scale(0.95);
 }
 
-.nutri-svg {
+.nutri-img {
   width: 100%;
   height: auto;
   display: block;
-}
-
-.nutri-eye {
-  transition: transform 0.2s ease;
-}
-
-.nutri-character:hover .nutri-eye.left {
-  transform: translateX(-2px);
-}
-
-.nutri-character:hover .nutri-eye.right:not(.winking) {
-  transform: translateX(2px);
-}
-
-/* Wink animation */
-.nutri-eye.right.winking .wink-lid {
-  opacity: 1;
-}
-
-.nutri-eye.right.winking circle {
-  opacity: 0;
+  border-radius: 20px;
 }
 
 .nutri-shadow {
@@ -413,13 +394,15 @@ h2 {
   }
 }
 
-/* Wink keyframes */
-@keyframes wink-animation {
-  0%, 100% {
-    transform: scaleY(1);
+/* Mobile Optimization */
+@media (max-width: 768px) {
+  .nutri-character {
+    width: min(220px, 60vw);
   }
-  50% {
-    transform: scaleY(0.1);
+  
+  .nutri-hint {
+    font-size: 11px;
+    margin-top: 12px;
   }
 }
 
