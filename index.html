@@ -40,15 +40,7 @@
               <a class="button ghost" href="#features">View features</a>
             </div>
           </div>
-          <div class="hero-media">
-            <div class="nutri-character" id="nutri" title="Click me!">
-              <div class="nutri-body">
-                <img src="public/nutri.png" alt="Nutri" class="nutri-img" id="nutriImg" />
-              </div>
-              <div class="nutri-shadow"></div>
-              <p class="nutri-hint">Tap me!</p>
-            </div>
-          </div>
+
         </div>
       </section>
 
@@ -180,7 +172,7 @@
             </div>
             <div class="why-slide">
               <p>
-                I&apos;m 17. I got into fitness and tried every app going — they all felt like a
+                I got into fitness and tried every app going — they all felt like a
                 <s>chore</s>. <s>Overpriced subscriptions</s>, boring interfaces, nothing that made
                 me want to stick with it. So I built my own app with achievements to unlock, levels
                 to grind, streaks to keep you consistent, and Nutri to keep you consistent while you
@@ -221,33 +213,6 @@
       <div class="container footer-bottom">© 2026 Nutrio+.</div>
     </footer>
     <script>
-      // Nutri character wink interaction
-      const nutri = document.getElementById('nutri');
-      const nutriImg = document.getElementById('nutriImg');
-      let isWinking = false;
-
-      if (nutri && nutriImg) {
-        nutri.addEventListener('click', () => {
-          if (isWinking) return;
-          isWinking = true;
-          
-          // Change to wink image
-          nutriImg.src = 'public/nutri-wink.png';
-          
-          // Play a little bounce animation
-          nutri.style.transform = 'scale(0.95)';
-          setTimeout(() => {
-            nutri.style.transform = '';
-          }, 100);
-          
-          // Change back after 400ms
-          setTimeout(() => {
-            nutriImg.src = 'public/nutri.png';
-            isWinking = false;
-          }, 400);
-        });
-      }
-
       const tabs = document.querySelectorAll('.feature-tabs .tab');
       const groups = document.querySelectorAll('.feature-group');
 
