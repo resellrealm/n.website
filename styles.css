@@ -55,6 +55,10 @@ body {
 }
 
 img { max-width: 100%; height: auto; display: block; }
+/* Several mascots sit in fixed-size slots inside narrower columns, where
+   max-width:100% squashes the width while the height stays locked. */
+.orb, .ways li img, .streak-icons img, .streak-solo, .feature-media img,
+.hero-nutri, .safety > img, .founder-inner > img, .cta-mascot { object-fit: contain; }
 a { color: inherit; -webkit-tap-highlight-color: transparent; }
 
 h1, h2, h3 { font-weight: 900; letter-spacing: -.032em; line-height: 1.04; margin: 0; }
@@ -181,24 +185,48 @@ p  { margin: 0 0 1rem; }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin: 1.7rem 0 .9rem; }
 .hero-note { font-size: .85rem; color: rgba(255,255,255,.95); margin: 0; font-weight: 500; }
 
-.hero-stage { position: relative; display: grid; place-items: center; min-height: 380px; will-change: transform; }
+.hero-stage { position: relative; display: grid; place-items: center; min-height: 380px; will-change: transform; overflow: hidden; }
 .halo {
   position: absolute; width: min(400px, 82%); aspect-ratio: 1; border-radius: 50%;
   background: radial-gradient(circle, rgba(255,255,255,.34), rgba(255,255,255,.08) 58%, transparent 70%);
   animation: pulse 6s ease-in-out infinite;
 }
 @keyframes pulse { 0%,100% { transform: scale(1); opacity: .85 } 50% { transform: scale(1.09); opacity: 1 } }
+.nutri-tap {
+  position: relative; display: block; padding: 0; border: 0; background: none;
+  cursor: pointer; -webkit-tap-highlight-color: transparent;
+  width: min(380px, 78%); aspect-ratio: 455 / 362;
+  transition: transform .35s var(--ease);
+}
+.nutri-tap:active { transform: scale(.95) rotate(-1.5deg); }
 .hero-nutri {
-  position: relative; width: min(400px, 80%);
+  position: absolute; inset: 0; width: 100%; height: 100%;
   filter: drop-shadow(0 26px 40px rgba(4,32,20,.34));
   animation: float 7.5s ease-in-out infinite;
+  transition: opacity .18s ease;
 }
-/* Three small icons orbiting the mascot. Each gets its own radius + phase so
-   they never line up and never collide with the mascot's silhouette. */
+/* Calm by default; tap or hold and Nutri winks back. */
+.face.wink { opacity: 0; }
+.nutri-tap.winking .face.calm { opacity: 0; }
+.nutri-tap.winking .face.wink { opacity: 1; }
+/* Six characters drifting around the mascot. Each has its own path, duration,
+   direction and negative delay, so they never sync and never read as a loop.
+   Sizes are deliberately uneven — an even ring looks placed rather than alive. */
 .orb { position: absolute; filter: drop-shadow(0 10px 18px rgba(4,32,20,.3)); }
-.orb-1 { width: 74px; top: 4%;  left: 2%;   animation: float 5.5s ease-in-out infinite; }
-.orb-2 { width: 66px; bottom: 8%; left: 8%; animation: float 6.8s ease-in-out -2s infinite; }
-.orb-3 { width: 84px; top: 12%; right: 1%;  animation: float 6.2s ease-in-out -3.5s infinite; }
+@keyframes drift1 { 0%,100% { transform: translate(0,0) rotate(-6deg) }
+                    33%     { transform: translate(13px,-18px) rotate(4deg) }
+                    66%     { transform: translate(-9px,-7px) rotate(-2deg) } }
+@keyframes drift2 { 0%,100% { transform: translate(0,0) rotate(5deg) }
+                    40%     { transform: translate(-14px,-13px) rotate(-5deg) }
+                    75%     { transform: translate(7px,9px) rotate(2deg) } }
+@keyframes drift3 { 0%,100% { transform: translate(0,0) rotate(0deg) }
+                    50%     { transform: translate(9px,16px) rotate(7deg) } }
+.o1 { width: 16%; top: 5%;    left: 2%;   animation: drift1 11s   ease-in-out infinite; }
+.o2 { width: 13%; bottom: 12%; left: 5%;  animation: drift2 13s   ease-in-out -3s infinite; }
+.o3 { width: 18%; top: 2%;    right: 2%;  animation: drift3 9.5s  ease-in-out -5s infinite; }
+.o4 { width: 19%; bottom: 5%; right: 5%;  animation: drift1 14s   ease-in-out -7s infinite reverse; }
+.o5 { width: 18%; top: 45%;   left: 1%;   animation: drift2 10.5s ease-in-out -2s infinite reverse; }
+.o6 { width: 16%; top: 31%;   right: 1%;  animation: drift3 12.5s ease-in-out -8s infinite; }
 
 /* ── Marquee strip ───────────────────────────────────────────────────── */
 .strip { background: var(--ink); color: #fff; padding: 15px 0; overflow: hidden; }
@@ -213,7 +241,7 @@ p  { margin: 0 0 1rem; }
 @keyframes marquee { from { transform: translateX(0) } to { transform: translateX(-50%) } }
 
 /* ── Sections ────────────────────────────────────────────────────────── */
-.section { padding: clamp(56px, 10vw, 104px) 0; }
+.section { padding: clamp(56px, 10vw, 104px) 0; overflow-x: clip; }
 .section.alt { background: var(--bg-alt); }
 .section-head { max-width: 40rem; margin: 0 auto clamp(32px, 6vw, 54px); text-align: center; }
 .section-sub { color: var(--muted); margin-top: 1.05rem; font-size: 1.02rem; }
@@ -242,7 +270,7 @@ p  { margin: 0 0 1rem; }
 .ways li:hover { transform: translateY(-6px); border-color: var(--green); box-shadow: 0 18px 40px rgba(13,26,20,.09); }
 /* Images are pre-cropped to their content, so a fixed height gives every card
    identical optical weight — which raw exports absolutely did not. */
-.ways li img { height: 88px; width: auto; margin: 0 auto 14px; }
+.ways li img { width: 112px; height: auto; margin: 0 auto 14px; }
 .way-num { display: block; font-size: .72rem; font-weight: 900; letter-spacing: .12em; color: var(--green-600); margin-bottom: 6px; }
 @media (prefers-color-scheme: dark) { .way-num { color: var(--green); } }
 .ways h3 { margin-bottom: .5rem; }
@@ -254,8 +282,13 @@ p  { margin: 0 0 1rem; }
 .feature.flip .feature-copy { order: 2; }
 .feature h2 { margin-bottom: 1rem; }
 .feature-copy > p { color: var(--muted); }
+/* The artwork is the point now — let it be big and let the copy ride over it. */
+.feature { position: relative; }
+.feature .feature-copy { position: relative; z-index: 2; }
 .feature-media { display: grid; place-items: center; }
-.feature-media img { width: min(340px, 78%); }
+.feature-media img { width: min(520px, 116%); max-width: none; }
+.feature:not(.flip) .feature-media { margin-left: -5%; }
+.feature.flip .feature-media { margin-right: -5%; }
 
 .ticks { list-style: none; margin: 1.4rem 0 0; padding: 0; display: grid; gap: 11px; }
 .ticks li { position: relative; padding-left: 30px; font-size: .95rem; }
@@ -291,13 +324,13 @@ p  { margin: 0 0 1rem; }
 
 /* ── Safety ──────────────────────────────────────────────────────────── */
 .safety { display: grid; grid-template-columns: minmax(0, 380px) 1fr; gap: clamp(20px, 4vw, 52px); align-items: center; }
-.safety > img { width: 100%; }
+.safety > img { width: min(470px, 114%); max-width: none; }
 .safety h2 { margin-bottom: 1rem; }
 .safety > div > p { color: var(--muted); }
 
 /* ── Founder ─────────────────────────────────────────────────────────── */
 .founder-inner { display: grid; grid-template-columns: minmax(0, 260px) 1fr; gap: clamp(20px, 4vw, 48px); align-items: center; max-width: 940px; }
-.founder-inner > img { width: 100%; }
+.founder-inner > img { width: min(300px, 110%); max-width: none; }
 .founder blockquote { margin: 0; border-left: 3px solid var(--green); padding-left: 26px; }
 .founder blockquote p { font-size: clamp(1.02rem, 3.4vw, 1.16rem); }
 .founder cite { display: block; font-style: normal; font-weight: 800; color: var(--green-600); margin-top: .4rem; }
@@ -331,9 +364,9 @@ p  { margin: 0 0 1rem; }
 .faq p { color: var(--muted); font-size: .95rem; margin: 0 0 16px; }
 
 /* ── Final CTA ───────────────────────────────────────────────────────── */
-.cta { background: linear-gradient(135deg, #5eb988, #479770); color: #fff; padding: clamp(52px, 9vw, 92px) 0 clamp(52px, 9vw, 92px); text-align: center; overflow: hidden; }
+.cta { overflow-x: clip; background: linear-gradient(135deg, #5eb988, #479770); color: #fff; padding: clamp(52px, 9vw, 92px) 0 clamp(52px, 9vw, 92px); text-align: center; overflow: hidden; }
 .cta-inner { display: grid; justify-items: center; }
-.cta-mascot { width: min(300px, 66%); margin-bottom: 18px; animation: float 7s ease-in-out infinite; filter: drop-shadow(0 18px 30px rgba(4,32,20,.28)); }
+.cta-mascot { width: min(400px, 80%); margin-bottom: 18px; animation: float 7s ease-in-out infinite; filter: drop-shadow(0 18px 30px rgba(4,32,20,.28)); }
 .cta-inner p { color: rgba(255,255,255,.92); max-width: 32rem; margin: 1rem auto 1.8rem; }
 
 /* ── Footer ──────────────────────────────────────────────────────────── */
@@ -412,13 +445,23 @@ p  { margin: 0 0 1rem; }
   body { font-size: 16px; }
   .site-nav { display: none; }
   .btn-sm { margin-left: auto; }
-  .hero-stage { min-height: 290px; }
-  .hero-nutri { width: min(300px, 74%); }
-  .orb-1 { width: 56px; left: 0; }
-  .orb-2 { width: 50px; left: 4%; }
-  .orb-3 { width: 62px; right: 0; }
-  .ways li img { height: 78px; }
-  .feature-media img { width: min(280px, 68%); }
+  .hero-stage { min-height: 330px; }
+  .nutri-tap { width: min(270px, 64%); }
+  /* Orbs stay inside the frame on phones, with enough inset to absorb their own
+     drift (~16px) — otherwise the animation itself pushes them past the edge. */
+  .o1 { width: 15%; top: 4%;    left: 4%;  }
+  .o2 { width: 13%; bottom: 14%; left: 6%; }
+  .o3 { width: 16%; top: 2%;    right: 4%; }
+  .o4 { width: 17%; bottom: 7%; right: 7%; }
+  .o5 { width: 15%; top: 46%;   left: 5%;  }
+  .o6 { width: 14%; top: 32%;   right: 6%; }
+  .ways li img { width: 96px; }
+  .feature-media img { width: min(430px, 100%); }
+  /* Copy climbs over the artwork rather than sitting politely beneath it. */
+  .feature .feature-copy { margin-top: -30px; }
+  .feature:not(.flip) .feature-media, .feature.flip .feature-media { margin-inline: 0; }
+  .safety > img { width: min(360px, 88%); }
+  .safety > div { margin-top: -24px; }
   .tiles { grid-template-columns: 1fr 1fr; }
   .tile b { font-size: 2rem; }
   .streaks > div { padding: 24px 20px; }
@@ -431,8 +474,8 @@ p  { margin: 0 0 1rem; }
   .hero-actions .appstore-badge { justify-content: center; }
   .btn-ghost { text-align: center; min-height: 46px; }
   .ways { grid-template-columns: 1fr; }
-  .ways li { display: grid; grid-template-columns: 84px 1fr; gap: 16px; text-align: left; align-items: center; padding: 18px 16px; }
-  .ways li img { height: 74px; margin: 0; grid-row: span 3; }
+  .ways li { display: grid; grid-template-columns: 92px 1fr; gap: 16px; text-align: left; align-items: center; padding: 18px 16px; }
+  .ways li img { width: 92px; height: auto; margin: 0; grid-row: span 3; }
   .way-num { margin-bottom: 2px; }
   .tile em { display: none; }             /* keep the 2-up grid legible at 375px */
   .strip-run { font-size: .74rem; gap: 12px; }
@@ -448,4 +491,5 @@ p  { margin: 0 0 1rem; }
   }
   .pre, .up { opacity: 1 !important; transform: none !important; }
   .hero-stage { transform: none !important; }
+  .orb { animation: none !important; }
 }
