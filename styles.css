@@ -100,7 +100,20 @@ p  { margin: 0 0 1rem; }
 }
 .header-inner { display: flex; align-items: center; gap: 18px; }
 .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-.brand-mark { width: 34px; height: 34px; border-radius: 9px; }
+/* The app icon's background is #7fc7a1 — byte-identical to the middle stop of
+   the hero gradient (contrast 1.00:1). Sitting on the hero it disappears
+   completely, leaving a floating white blob, and because the gradient animates
+   it does this intermittently. The mark therefore always carries its own
+   separation: a white ring that reads against the green, plus a soft shadow
+   that reads against white/dark once the header goes solid. Never rely on the
+   surrounding background to define this icon. */
+.brand-mark {
+  width: 34px; height: 34px; border-radius: 9px;
+  box-shadow: 0 0 0 2px rgba(255,255,255,.92), 0 2px 8px rgba(6,28,18,.22);
+}
+@media (prefers-color-scheme: dark) {
+  .site-header.stuck .brand-mark { box-shadow: 0 0 0 2px rgba(255,255,255,.28), 0 2px 8px rgba(0,0,0,.4); }
+}
 .brand-name { font-weight: 900; letter-spacing: -.02em; font-size: 1.1rem; }
 .site-nav { margin-left: auto; display: flex; gap: 26px; }
 .site-nav a { text-decoration: none; font-weight: 600; font-size: .92rem; color: var(--muted); transition: color .2s; }
@@ -117,6 +130,15 @@ p  { margin: 0 0 1rem; }
 .btn:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(16,185,129,.4); }
 .btn:active { transform: translateY(0) scale(.97); }
 .btn-sm { padding: 9px 18px; font-size: .9rem; min-height: 40px; }
+/* #10b981 on the hero gradient is 1.06:1 — the button shape vanishes and only
+   its label survives. While the header is transparent (i.e. over the hero) the
+   CTA goes white-on-green; once .stuck gives the header a solid background the
+   emerald button reads properly again and comes back. */
+.site-header:not(.stuck) .btn {
+  background: #fff; color: var(--green-700);
+  box-shadow: 0 4px 18px rgba(6,28,18,.24);
+}
+.site-header:not(.stuck) .btn:hover { box-shadow: 0 10px 26px rgba(6,28,18,.3); }
 .btn-ghost { background: rgba(255,255,255,.1); color: #fff; box-shadow: none; border: 1.5px solid rgba(255,255,255,.72); font-weight: 700; }
 .btn-ghost:hover { background: rgba(255,255,255,.22); box-shadow: none; }
 
@@ -200,7 +222,7 @@ p  { margin: 0 0 1rem; }
 @media (prefers-color-scheme: dark) { .eyebrow.dark { color: var(--green); } }
 
 .hl {
-  display: inline-block; background: rgba(8,24,17,.55); color: var(--green);
+  display: inline-block; background: rgba(6,20,14,.74); color: var(--green);
   padding: .04em .32em; border-radius: 13px;
   box-decoration-break: clone; -webkit-box-decoration-break: clone;
 }
@@ -318,7 +340,7 @@ p  { margin: 0 0 1rem; }
 .site-footer { background: var(--bg-alt); border-top: 1px solid var(--line); padding: 44px 0 calc(30px + env(safe-area-inset-bottom)); }
 .footer-inner { display: flex; flex-wrap: wrap; gap: 26px; justify-content: space-between; align-items: flex-start; }
 .footer-brand { display: flex; gap: 12px; align-items: center; }
-.footer-brand img { border-radius: 8px; }
+.footer-brand img { border-radius: 8px; box-shadow: 0 0 0 1.5px rgba(13,26,20,.1), 0 2px 6px rgba(6,28,18,.12); }
 .footer-brand strong { display: block; font-weight: 900; }
 .footer-brand p { margin: 0; color: var(--muted); font-size: .87rem; }
 .footer-links { display: flex; flex-wrap: wrap; gap: 10px 20px; }
