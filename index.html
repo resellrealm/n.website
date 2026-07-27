@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <title>Nutrio+ | AI nutrition tracking that feels like a game</title>
     <meta name="description" content="Snap a photo and Nutrio+ logs the calories, macros and micronutrients. 813 exercises, 146 achievements, streaks and leagues — nutrition tracking you'll actually keep up. iPhone. 3-day free trial." />
     <meta name="theme-color" content="#479770" />
@@ -15,14 +15,15 @@
     <meta property="og:url" content="https://nutrioplus.co.uk/" />
     <meta property="og:title" content="Nutrio+ | AI nutrition tracking that feels like a game" />
     <meta property="og:description" content="Snap a photo and Nutrio+ logs the calories, macros and micronutrients. 146 achievements, 100 levels, streaks and leagues. iPhone." />
-    <meta property="og:image" content="https://nutrioplus.co.uk/public/screen-home.png" />
+    <meta property="og:image" content="https://nutrioplus.co.uk/public/m-hero.png" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Nutrio+ | AI nutrition tracking that feels like a game" />
     <meta name="twitter:description" content="Snap a photo and Nutrio+ logs the calories, macros and micronutrients. 146 achievements, 100 levels, streaks and leagues." />
-    <meta name="twitter:image" content="https://nutrioplus.co.uk/public/screen-home.png" />
+    <meta name="twitter:image" content="https://nutrioplus.co.uk/public/m-hero.png" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" as="image" href="public/m-hero.png" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
   </head>
@@ -32,7 +33,7 @@
     <header class="site-header">
       <div class="container header-inner">
         <a class="brand" href="/">
-          <img src="public/nutri-app-icon.png" alt="" class="brand-mark" width="36" height="36" />
+          <img src="public/nutri-app-icon.png" alt="" class="brand-mark" width="34" height="34" />
           <span class="brand-name">Nutrio+</span>
         </a>
         <nav class="site-nav" aria-label="Primary">
@@ -48,92 +49,71 @@
     <main id="main">
       <!-- ── Hero ─────────────────────────────────────────────────────── -->
       <section class="hero">
-        <div class="hero-glow" aria-hidden="true"></div>
+        <div class="hero-blob b1" aria-hidden="true"></div>
+        <div class="hero-blob b2" aria-hidden="true"></div>
         <div class="container hero-inner">
-          <div class="hero-copy reveal">
-            <p class="eyebrow">AI-powered nutrition &amp; fitness</p>
+          <div class="hero-copy">
+            <p class="eyebrow up" style="--d:0ms">AI-powered nutrition &amp; fitness</p>
             <h1>
-              Track your food.<br />
-              <span class="hl">Level up your life.</span>
+              <span class="up" style="--d:70ms">Track your food.</span><br />
+              <span class="hl up" style="--d:150ms">Level up your life.</span>
             </h1>
-            <p class="lead">
+            <p class="lead up" style="--d:230ms">
               Snap a photo and Nutri works out the calories, macros and micronutrients.
               Then keeps you coming back with streaks, XP and 146 achievements to chase.
             </p>
-            <div class="hero-actions">
+            <div class="hero-actions up" style="--d:310ms">
               <a class="appstore-badge" href="https://apps.apple.com/app/nutrioplus/id6759395754">
-                <svg viewBox="0 0 384 512" aria-hidden="true" focusable="false">
-                  <path fill="currentColor" d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/>
-                </svg>
-                <span>
-                  <small>Download on the</small>
-                  <strong>App Store</strong>
-                </span>
+                <svg viewBox="0 0 384 512" aria-hidden="true" focusable="false"><path fill="currentColor" d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
+                <span><small>Download on the</small><strong>App Store</strong></span>
               </a>
               <a class="btn btn-ghost" href="#log">See how it works</a>
             </div>
-            <p class="hero-note">iPhone · 3-day free trial · cancel anytime</p>
+            <p class="hero-note up" style="--d:380ms">iPhone · 3-day free trial · cancel anytime</p>
           </div>
 
-          <div class="hero-media reveal" aria-hidden="true">
-            <img src="public/screen-nutrition.png" alt="" class="phone phone-back" width="400" height="800" loading="eager" />
-            <img src="public/screen-home.png" alt="" class="phone phone-front" width="400" height="800" loading="eager" />
-            <img src="public/nutri-wink.png" alt="" class="hero-mascot" width="120" height="120" loading="lazy" />
+          <div class="hero-stage" aria-hidden="true">
+            <div class="halo"></div>
+            <img src="public/m-hero.png" alt="" class="hero-nutri" width="520" height="421" fetchpriority="high" />
+            <img src="public/m-flame.png" alt="" class="orb orb-1" width="158" height="200" loading="lazy" />
+            <img src="public/m-flame-blue.png" alt="" class="orb orb-2" width="158" height="200" loading="lazy" />
+            <img src="public/m-trophy.png" alt="" class="orb orb-3" width="189" height="240" loading="lazy" />
           </div>
         </div>
       </section>
 
       <!-- ── Trust strip ──────────────────────────────────────────────── -->
-      <section class="strip">
-        <div class="container strip-inner">
-          <span>AI meal scans</span><i></i>
-          <span>813 exercises</span><i></i>
-          <span>146 achievements</span><i></i>
-          <span>Leagues &amp; friends</span><i></i>
-          <span>Zero ads</span>
+      <section class="strip" aria-label="At a glance">
+        <div class="strip-track">
+          <div class="strip-run">
+            <span>AI meal scans</span><i></i><span>813 exercises</span><i></i><span>146 achievements</span><i></i>
+            <span>100 levels</span><i></i><span>Leagues &amp; friends</span><i></i><span>Zero ads</span><i></i>
+          </div>
+          <div class="strip-run" aria-hidden="true">
+            <span>AI meal scans</span><i></i><span>813 exercises</span><i></i><span>146 achievements</span><i></i>
+            <span>100 levels</span><i></i><span>Leagues &amp; friends</span><i></i><span>Zero ads</span><i></i>
+          </div>
         </div>
       </section>
 
       <!-- ── Five ways to log ─────────────────────────────────────────── -->
       <section id="log" class="section">
         <div class="container">
-          <header class="section-head reveal">
-            <p class="eyebrow dark">Logging, five ways</p>
-            <h2>However you want to log it,<br /><span class="hl hl-dark">it takes seconds.</span></h2>
-            <p class="section-sub">Most apps give you a search box. Nutrio+ gives you five routes to the same place.</p>
+          <header class="section-head">
+            <p class="eyebrow dark up">Logging, five ways</p>
+            <h2 class="up" style="--d:60ms">However you log it,<br /><span class="hl hl-dark">it takes seconds.</span></h2>
+            <p class="section-sub up" style="--d:130ms">Most apps give you a search box. Nutrio+ gives you five routes to the same place.</p>
           </header>
 
-          <ul class="ways reveal">
-            <li>
-              <span class="way-num">01</span>
-              <h3>Photograph it</h3>
-              <p>Point your camera at the plate. You get the name, weight, full macros, fibre, sugar, sodium and a health score.</p>
-            </li>
-            <li>
-              <span class="way-num">02</span>
-              <h3>Scan the barcode</h3>
-              <p>Live camera scanning with torch support, plus a fallback built for UK supermarket own-brands.</p>
-            </li>
-            <li>
-              <span class="way-num">03</span>
-              <h3>Just type it</h3>
-              <p>“Two eggs on brown toast and a flat white.” It splits the items and portions them out for you.</p>
-            </li>
-            <li>
-              <span class="way-num">04</span>
-              <h3>Say it out loud</h3>
-              <p>Hands covered in cooking? Talk to it. Voice runs through the same understanding as typing.</p>
-            </li>
-            <li>
-              <span class="way-num">05</span>
-              <h3>Photograph a recipe book</h3>
-              <p>Snap a page from a cookbook and it comes back as a structured recipe with nutrition worked out.</p>
-            </li>
+          <ul class="ways stagger">
+            <li><img src="public/m-camera.png" alt="" width="260" height="200" loading="lazy" /><span class="way-num">01</span><h3>Photograph it</h3><p>Point at the plate. You get the name, weight, full macros, fibre, sugar, sodium and a health score.</p></li>
+            <li><img src="public/m-scan.png" alt="" width="260" height="181" loading="lazy" /><span class="way-num">02</span><h3>Scan the barcode</h3><p>Live camera scanning with torch support, plus a fallback built for UK supermarket own-brands.</p></li>
+            <li><img src="public/m-type.png" alt="" width="260" height="200" loading="lazy" /><span class="way-num">03</span><h3>Just type it</h3><p>“Two eggs on brown toast and a flat white.” It splits the items and portions them for you.</p></li>
+            <li><img src="public/m-voice.png" alt="" width="260" height="189" loading="lazy" /><span class="way-num">04</span><h3>Say it out loud</h3><p>Hands covered in cooking? Talk to it. Voice runs through the same understanding as typing.</p></li>
+            <li><img src="public/m-cook.png" alt="" width="260" height="203" loading="lazy" /><span class="way-num">05</span><h3>Snap a recipe book</h3><p>Photograph a cookbook page and it comes back as a structured recipe, nutrition worked out.</p></li>
           </ul>
 
-          <p class="fineprint reveal">
-            It understands the way people actually describe food — “a knob of butter”, “a glass of wine”, “half a bar of chocolate” — and learns how you portion things over time.
-          </p>
+          <p class="fineprint up">It understands how people actually describe food — “a knob of butter”, “a glass of wine”, “half a bar of chocolate” — and learns how you portion things over time.</p>
         </div>
       </section>
 
@@ -141,42 +121,42 @@
       <section id="features" class="section alt">
         <div class="container">
 
-          <div class="feature reveal">
+          <div class="feature">
             <div class="feature-copy">
-              <p class="eyebrow dark">Your day, at a glance</p>
-              <h2>Your whole day,<br /><span class="hl hl-dark">one glance.</span></h2>
-              <p>Calories, protein, water and meals on one screen, with rings that fill as the day goes. No digging, no spreadsheets — open it and you know where you stand.</p>
-              <ul class="ticks">
+              <p class="eyebrow dark up">Your day, at a glance</p>
+              <h2 class="up" style="--d:60ms">Your whole day,<br /><span class="hl hl-dark">one glance.</span></h2>
+              <p class="up" style="--d:120ms">Calories, protein, water and meals on one screen, with rings that fill as the day goes. Open it and you know exactly where you stand.</p>
+              <ul class="ticks stagger">
                 <li>Daily summary and goal rings</li>
                 <li>Meal streak and workout streak side by side</li>
                 <li>One-tap log meal, workout or weight</li>
                 <li>Steps and calories burnt from Apple Health</li>
               </ul>
             </div>
-            <div class="feature-media"><img src="public/screen-home.png" alt="The Nutrio+ home screen showing a daily summary, goal rings and quick actions" width="400" height="800" loading="lazy" /></div>
+            <div class="feature-media"><img src="public/m-day.png" alt="Nutri surrounded by charts and progress dashboards" width="460" height="322" loading="lazy" class="float" /></div>
           </div>
 
-          <div class="feature flip reveal">
+          <div class="feature flip">
             <div class="feature-copy">
-              <p class="eyebrow dark">Beyond calories</p>
-              <h2>Every meal,<br /><span class="hl hl-dark">perfectly tracked.</span></h2>
-              <p>Most trackers stop at calories and three macros. Nutrio+ also tracks the things that actually change how you feel — fibre, sugar and salt — against targets built from published guidance, not guesswork.</p>
-              <ul class="ticks">
+              <p class="eyebrow dark up">Beyond calories</p>
+              <h2 class="up" style="--d:60ms">Every meal,<br /><span class="hl hl-dark">properly tracked.</span></h2>
+              <p class="up" style="--d:120ms">Most trackers stop at calories and three macros. Nutrio+ also tracks what actually changes how you feel — fibre, sugar and salt — against targets built from published guidance, not guesswork.</p>
+              <ul class="ticks stagger">
                 <li>Calories, protein, carbs and fat</li>
                 <li>Fibre, sugar and salt with their own targets</li>
                 <li>Targets from Mifflin&#8211;St Jeor, USDA and WHO guidance</li>
-                <li>A–F meal grades so you learn as you log</li>
+                <li>A–F meal grades, so you learn as you log</li>
               </ul>
             </div>
-            <div class="feature-media"><img src="public/screen-nutrition.png" alt="The Nutrio+ nutrition screen showing a calorie arc, macro rings and micronutrient tracking" width="400" height="800" loading="lazy" /></div>
+            <div class="feature-media"><img src="public/m-eat.png" alt="Nutri holding a bowl of food" width="440" height="400" loading="lazy" class="float d1" /></div>
           </div>
 
-          <div class="feature reveal">
+          <div class="feature">
             <div class="feature-copy">
-              <p class="eyebrow dark">Train with purpose</p>
-              <h2>Train smarter,<br /><span class="hl hl-dark">not harder.</span></h2>
-              <p>A full gym in your pocket: log every set, watch a live muscle map light up as you train, and let the AI build you a plan around your equipment and schedule.</p>
-              <ul class="ticks">
+              <p class="eyebrow dark up">Train with purpose</p>
+              <h2 class="up" style="--d:60ms">Train smarter,<br /><span class="hl hl-dark">not harder.</span></h2>
+              <p class="up" style="--d:120ms">A full gym in your pocket: log every set, watch a live muscle map light up as you train, and let the AI build a plan around your equipment and schedule.</p>
+              <ul class="ticks stagger">
                 <li><strong>813 exercises</strong> across 11 categories</li>
                 <li>Anatomical muscle map — 14 groups, front and back</li>
                 <li>Personal records detected automatically</li>
@@ -184,65 +164,55 @@
                 <li>Workouts written back to Apple Health</li>
               </ul>
             </div>
-            <div class="feature-media feature-stat">
-              <div class="statbox">
-                <img src="public/nutri-gym.png" alt="" width="110" height="110" loading="lazy" />
-                <div class="statgrid">
-                  <div><b>813</b><span>exercises</span></div>
-                  <div><b>14</b><span>muscle groups</span></div>
-                  <div><b>16</b><span>class types</span></div>
-                  <div><b>6</b><span>training splits</span></div>
-                </div>
-              </div>
-            </div>
+            <div class="feature-media"><img src="public/m-gym.png" alt="Nutri lifting a dumbbell" width="327" height="265" loading="lazy" class="float d2" /></div>
           </div>
 
-          <div class="feature flip reveal">
+          <div class="feature flip">
             <div class="feature-copy">
-              <p class="eyebrow dark">Level up</p>
-              <h2>Turn fitness<br /><span class="hl hl-dark">into a game.</span></h2>
-              <p>This is the bit other apps don't do. Every meal and every workout earns XP. You climb levels, protect streaks, unlock achievements and compete with friends — because consistency is the whole game, and boring apps get deleted.</p>
-              <ul class="ticks">
+              <p class="eyebrow dark up">Level up</p>
+              <h2 class="up" style="--d:60ms">Turn fitness<br /><span class="hl hl-dark">into a game.</span></h2>
+              <p class="up" style="--d:120ms">This is the bit other apps don't do. Every meal and every workout earns XP. You climb levels, protect streaks, unlock achievements and race your friends — because consistency is the whole game, and boring apps get deleted.</p>
+              <ul class="ticks stagger">
                 <li><strong>146 achievements</strong> — every one free</li>
-                <li><strong>100 levels</strong>, from Nutrition Newbie to Nutrio God</li>
+                <li><strong>100 levels</strong>, Nutrition Newbie to Nutrio God</li>
                 <li>10 leagues with weekly promotion</li>
-                <li>Profile cards you actually own and customise</li>
+                <li>Profile cards you earn and customise</li>
               </ul>
             </div>
-            <div class="feature-media"><img src="public/screen-profile.png" alt="The Nutrio+ profile screen showing level 10, achievements at 42 of 146, and recent unlocks" width="400" height="800" loading="lazy" /></div>
+            <div class="feature-media"><img src="public/m-achieve.png" alt="Nutri dressed as an explorer with a pile of treasure" width="440" height="309" loading="lazy" class="float d1" /></div>
           </div>
 
         </div>
       </section>
 
-      <!-- ── Gamification grid ────────────────────────────────────────── -->
+      <!-- ── Gamification ─────────────────────────────────────────────── -->
       <section id="game" class="section game">
         <div class="container">
-          <header class="section-head reveal">
-            <p class="eyebrow">The reward layer</p>
-            <h2>Consistency, made<br /><span class="hl">worth chasing.</span></h2>
-            <p class="section-sub">Streaks to protect, coins to spend, a wheel to spin. Everything below is included — there's no second currency you buy with real money.</p>
+          <header class="section-head">
+            <p class="eyebrow up">The reward layer</p>
+            <h2 class="up" style="--d:60ms">Consistency, made<br /><span class="hl">worth chasing.</span></h2>
+            <p class="section-sub up" style="--d:130ms">Streaks to protect, coins to spend, a wheel to spin. All of it included — there's no second currency you buy with real money.</p>
           </header>
 
-          <div class="tiles reveal">
-            <div class="tile"><b>146</b><span>Achievements</span><em>All free. 30 of them hidden.</em></div>
-            <div class="tile"><b>100</b><span>Levels</span><em>Every one named. L100 is “NUTRIO GOD”.</em></div>
-            <div class="tile"><b>10</b><span>Leagues</span><em>Bronze to Legend, promoted weekly.</em></div>
-            <div class="tile"><b>64</b><span>Profile rings</span><em>Earned by levelling, spinning, referring.</em></div>
-            <div class="tile"><b>77</b><span>Name tags</span><em>44 locked behind achievements alone.</em></div>
-            <div class="tile"><b>50</b><span>Card designs</span><em>Plus 12 patterns to layer on top.</em></div>
-            <div class="tile"><b>7</b><span>Day chest cycle</span><em>Escalating rewards for showing up.</em></div>
-            <div class="tile"><b>1</b><span>Daily spin</span><em>Guaranteed cosmetic every 7 spins.</em></div>
+          <div class="tiles stagger">
+            <div class="tile"><b data-count="146">146</b><span>Achievements</span><em>All free. 30 of them hidden.</em></div>
+            <div class="tile"><b data-count="100">100</b><span>Levels</span><em>Every one named. L100 is “NUTRIO GOD”.</em></div>
+            <div class="tile"><b data-count="813">813</b><span>Exercises</span><em>Across 11 categories.</em></div>
+            <div class="tile"><b data-count="10">10</b><span>Leagues</span><em>Bronze to Legend, promoted weekly.</em></div>
+            <div class="tile"><b data-count="64">64</b><span>Profile rings</span><em>Level up, spin, or refer to earn them.</em></div>
+            <div class="tile"><b data-count="77">77</b><span>Name tags</span><em>44 behind achievements alone.</em></div>
+            <div class="tile"><b data-count="50">50</b><span>Card designs</span><em>Plus 12 patterns to layer on.</em></div>
+            <div class="tile"><b data-count="14">14</b><span>Allergens</span><em>The full UK FSA list, screened.</em></div>
           </div>
 
-          <div class="streaks reveal">
+          <div class="streaks stagger">
             <div>
-              <img src="public/nutri-streaks.png" alt="" width="72" height="72" loading="lazy" />
+              <div class="streak-icons"><img src="public/m-flame.png" alt="" width="158" height="200" loading="lazy" /><img src="public/m-flame-blue.png" alt="" width="158" height="200" loading="lazy" /></div>
               <h3>Streaks you can defend</h3>
-              <p>Miss a day and you don't have to lose everything. Spend a <b>Streak Shield</b> to patch a gap in your meal streak, or a <b>Rest Token</b> to keep a workout streak alive. You earn both by playing — no purchase involved.</p>
+              <p>Miss a day and you don't lose everything. Spend a <b>Streak Shield</b> to patch a gap in your meal streak, or a <b>Rest Token</b> to keep a workout streak alive. You earn both by playing — no purchase involved.</p>
             </div>
             <div>
-              <img src="public/nutri-trophy.png" alt="" width="72" height="72" loading="lazy" />
+              <img src="public/m-trophy.png" alt="" class="streak-solo" width="189" height="240" loading="lazy" />
               <h3>Friends, not strangers</h3>
               <p>A weekly league against people you actually know, ranked on XP only — never on weight or calories. Send reactions when someone's on a run. There's no global leaderboard, on purpose.</p>
             </div>
@@ -252,27 +222,25 @@
 
       <!-- ── Safety ───────────────────────────────────────────────────── -->
       <section class="section alt">
-        <div class="container safety reveal">
-          <img src="public/nutri-allergy.png" alt="" width="120" height="120" loading="lazy" />
+        <div class="container safety">
+          <img src="public/m-allergy.png" alt="Nutri beside a crossed-out plate of allergens" width="420" height="295" loading="lazy" class="float" />
           <div>
-            <p class="eyebrow dark">Built for the UK</p>
-            <h2>All <span class="hl hl-dark">14 FSA allergens</span>, flagged.</h2>
-            <p>Every meal you scan is checked against the full UK Food Standards Agency list — gluten, crustaceans, eggs, fish, peanuts, soy, milk, tree nuts, celery, mustard, sesame, sulphites, lupin and molluscs. You're told what a meal contains <em>and</em> what it's free from.</p>
-            <p class="fineprint left">
-              Being straight with you: this is an aid, not a medical device. AI can get things wrong and can miss an allergen entirely. If you have a serious allergy, always check the packaging or ask the kitchen. Nutrio+ says exactly this inside the app, too.
-            </p>
+            <p class="eyebrow dark up">Built for the UK</p>
+            <h2 class="up" style="--d:60ms">All <span class="hl hl-dark">14 FSA allergens</span>, flagged.</h2>
+            <p class="up" style="--d:120ms">Every meal you scan is checked against the full UK Food Standards Agency list — gluten, crustaceans, eggs, fish, peanuts, soy, milk, tree nuts, celery, mustard, sesame, sulphites, lupin and molluscs. You're told what a meal contains <em>and</em> what it's free from.</p>
+            <p class="fineprint left up" style="--d:180ms">Being straight with you: this is an aid, not a medical device. AI can get things wrong and can miss an allergen entirely. If you have a serious allergy, always check the packaging or ask the kitchen. Nutrio+ says exactly this inside the app, too.</p>
           </div>
         </div>
       </section>
 
       <!-- ── Founder ──────────────────────────────────────────────────── -->
       <section class="section founder">
-        <div class="container founder-inner reveal">
-          <img src="public/nutri.png" alt="" width="140" height="140" loading="lazy" />
+        <div class="container founder-inner">
+          <img src="public/m-nutri.png" alt="" width="380" height="302" loading="lazy" class="float" />
           <blockquote>
-            <p>I got into fitness and tried every app going. They all felt like a chore — boring, forgettable, nothing that made me actually want to open them.</p>
-            <p>So I built my own. Achievements to unlock, XP to grind, streaks worth protecting, and Nutri cheering you on the whole way.</p>
-            <cite>The app I wished existed. Built different, on purpose.</cite>
+            <p class="up">I got into fitness and tried every app going. They all felt like a chore — boring, forgettable, nothing that made me actually want to open them.</p>
+            <p class="up" style="--d:90ms">So I built my own. Achievements to unlock, XP to grind, streaks worth protecting, and Nutri cheering you on the whole way.</p>
+            <cite class="up" style="--d:180ms">The app I wished existed. Built different, on purpose.</cite>
           </blockquote>
         </div>
       </section>
@@ -280,43 +248,24 @@
       <!-- ── Pricing ──────────────────────────────────────────────────── -->
       <section id="pricing" class="section alt">
         <div class="container">
-          <header class="section-head reveal">
-            <p class="eyebrow dark">Pricing</p>
-            <h2>Try it free<br /><span class="hl hl-dark">for three days.</span></h2>
-            <p class="section-sub">One subscription, everything unlocked. No ads, no upsells, no separate currency to buy.</p>
+          <header class="section-head">
+            <p class="eyebrow dark up">Pricing</p>
+            <h2 class="up" style="--d:60ms">Try it free<br /><span class="hl hl-dark">for three days.</span></h2>
+            <p class="section-sub up" style="--d:130ms">One subscription, everything unlocked. No ads, no upsells, no currency to buy.</p>
           </header>
 
-          <div class="plans reveal">
-            <div class="plan">
-              <h3>Monthly</h3>
-              <p class="price">£10.99<span>/month</span></p>
-              <p class="plan-sub">Billed monthly</p>
-            </div>
-            <div class="plan">
-              <h3>6-Month</h3>
-              <p class="price">£54.99<span>/6 months</span></p>
-              <p class="plan-sub">£9.17 a month · save 17%</p>
-            </div>
-            <div class="plan best">
-              <span class="badge">Best value</span>
-              <h3>Yearly</h3>
-              <p class="price">£89.99<span>/year</span></p>
-              <p class="plan-sub">£7.50 a month · save 32%</p>
-            </div>
+          <div class="plans stagger">
+            <div class="plan"><h3>Monthly</h3><p class="price">£10.99<span>/month</span></p><p class="plan-sub">Billed monthly</p></div>
+            <div class="plan"><h3>6-Month</h3><p class="price">£54.99<span>/6 months</span></p><p class="plan-sub">£9.17 a month · save 17%</p></div>
+            <div class="plan best"><span class="badge">Best value</span><h3>Yearly</h3><p class="price">£89.99<span>/year</span></p><p class="plan-sub">£7.50 a month · save 32%</p></div>
           </div>
 
-          <div class="plans-cta reveal">
+          <div class="plans-cta up">
             <a class="appstore-badge dark" href="https://apps.apple.com/app/nutrioplus/id6759395754">
-              <svg viewBox="0 0 384 512" aria-hidden="true" focusable="false">
-                <path fill="currentColor" d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/>
-              </svg>
+              <svg viewBox="0 0 384 512" aria-hidden="true" focusable="false"><path fill="currentColor" d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
               <span><small>Download on the</small><strong>App Store</strong></span>
             </a>
-            <p class="fineprint">
-              Prices shown in GBP and may vary by region — the App Store always shows what you'll actually pay.
-              Subscriptions renew automatically unless cancelled at least 24 hours before the period ends.
-              Manage or cancel any time in your Apple ID settings.
-            </p>
+            <p class="fineprint">Prices shown in GBP and may vary by region — the App Store always shows what you'll actually pay. Subscriptions renew automatically unless cancelled at least 24 hours before the period ends. Manage or cancel any time in your Apple ID settings.</p>
           </div>
         </div>
       </section>
@@ -324,35 +273,37 @@
       <!-- ── FAQ ──────────────────────────────────────────────────────── -->
       <section class="section">
         <div class="container faq-wrap">
-          <header class="section-head reveal">
-            <p class="eyebrow dark">Questions</p>
-            <h2>Before you<br /><span class="hl hl-dark">download.</span></h2>
+          <header class="section-head">
+            <img src="public/m-question.png" alt="" width="240" height="166" loading="lazy" class="faq-mascot float" />
+            <p class="eyebrow dark up">Questions</p>
+            <h2 class="up" style="--d:60ms">Before you<br /><span class="hl hl-dark">download.</span></h2>
           </header>
 
-          <div class="faq reveal">
-            <details><summary>Is there a free version?</summary><p>There's a 3-day free trial on every plan, and you can cancel before it ends without being charged. After that Nutrio+ is a paid subscription — it's one app, fully unlocked, rather than a free tier that nags you.</p></details>
+          <div class="faq stagger">
+            <details><summary>Is there a free version?</summary><p>There's a 3-day free trial on every plan, and you can cancel before it ends without being charged. After that Nutrio+ is a paid subscription — one app, fully unlocked, rather than a free tier that nags you.</p></details>
             <details><summary>How do I cancel?</summary><p>Through your Apple ID subscription settings, the same as any App Store subscription. Cancel at least 24 hours before your trial or period ends. We never see your card details — Apple handles all billing.</p></details>
             <details><summary>Is it on Android?</summary><p>Not yet. Nutrio+ is iPhone-only for now, and it's built natively for iOS — Apple Health, home-screen widgets and lock-screen widgets all work properly.</p></details>
-            <details><summary>How accurate is the AI?</summary><p>It's very good at recognisable meals and packaged food, and less certain with mixed dishes where ingredients are hidden. You can edit anything it returns, and it learns how you portion things over time. Treat it as a fast first draft you can correct, not an absolute truth.</p></details>
-            <details><summary>Can I trust it with allergies?</summary><p>Use it as a helpful extra check, never as your only one. It screens against all 14 UK FSA allergens and tells you what a meal is free from as well as what it contains — but AI can miss things. Always check packaging or ask the kitchen if an allergy is serious.</p></details>
+            <details><summary>How accurate is the AI?</summary><p>Very good at recognisable meals and packaged food, less certain with mixed dishes where ingredients are hidden. You can edit anything it returns, and it learns how you portion things over time. Treat it as a fast first draft you can correct, not gospel.</p></details>
+            <details><summary>Can I trust it with allergies?</summary><p>Use it as a helpful extra check, never your only one. It screens all 14 UK FSA allergens and tells you what a meal is free from as well as what it contains — but AI can miss things. Always check packaging or ask the kitchen if an allergy is serious.</p></details>
             <details><summary>Does it work with Apple Health?</summary><p>Yes. It reads your steps and the calories you've burned, and writes your workouts back to Apple Health so the rest of your health data stays in one place.</p></details>
-            <details><summary>Is there a widget?</summary><p>Three home-screen sizes plus a lock-screen widget, showing calories against goal, macros, water and both your streaks. Tapping one drops you straight into the app.</p></details>
-            <details><summary>What happens if I lose signal?</summary><p>Keep logging. Meals queue up on your phone and sync the moment you're back online.</p></details>
+            <details><summary>Is there a widget?</summary><p>Three home-screen sizes plus a lock-screen widget, showing calories against goal, macros, water and both streaks. Tapping one drops you straight into the app.</p></details>
+            <details><summary>What if I lose signal?</summary><p>Keep logging. Meals queue on your phone and sync the moment you're back online.</p></details>
           </div>
         </div>
       </section>
 
       <!-- ── Final CTA ────────────────────────────────────────────────── -->
       <section class="cta">
-        <div class="container cta-inner reveal">
-          <h2>Start your streak today.</h2>
-          <p>Three days free. Everything unlocked. See if a tracker you don't hate makes the difference.</p>
-          <a class="appstore-badge" href="https://apps.apple.com/app/nutrioplus/id6759395754">
-            <svg viewBox="0 0 384 512" aria-hidden="true" focusable="false">
-              <path fill="currentColor" d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/>
-            </svg>
-            <span><small>Download on the</small><strong>App Store</strong></span>
-          </a>
+        <div class="container cta-inner">
+          <img src="public/m-skate.png" alt="" width="420" height="292" loading="lazy" class="cta-mascot" />
+          <h2 class="up">Start your streak today.</h2>
+          <p class="up" style="--d:80ms">Three days free. Everything unlocked. See if a tracker you don't hate makes the difference.</p>
+          <div class="up" style="--d:150ms">
+            <a class="appstore-badge" href="https://apps.apple.com/app/nutrioplus/id6759395754">
+              <svg viewBox="0 0 384 512" aria-hidden="true" focusable="false"><path fill="currentColor" d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
+              <span><small>Download on the</small><strong>App Store</strong></span>
+            </a>
+          </div>
         </div>
       </section>
     </main>
@@ -361,18 +312,11 @@
       <div class="container footer-inner">
         <div class="footer-brand">
           <img src="public/nutri-app-icon.png" alt="" width="32" height="32" />
-          <div>
-            <strong>Nutrio+</strong>
-            <p>Nutrition and fitness tracking that sticks.</p>
-          </div>
+          <div><strong>Nutrio+</strong><p>Nutrition and fitness tracking that sticks.</p></div>
         </div>
         <nav class="footer-links" aria-label="Footer">
-          <a href="#features">Features</a>
-          <a href="#pricing">Pricing</a>
-          <a href="/privacy">Privacy</a>
-          <a href="/terms">Terms</a>
-          <a href="/cookies">Cookies</a>
-          <a href="/refunds">Refunds</a>
+          <a href="#features">Features</a><a href="#pricing">Pricing</a><a href="/privacy">Privacy</a>
+          <a href="/terms">Terms</a><a href="/cookies">Cookies</a><a href="/refunds">Refunds</a>
           <a href="mailto:support@nutrioplus.co.uk">Support</a>
         </nav>
       </div>
@@ -382,30 +326,72 @@
     </footer>
 
     <script>
-      // Reveal on scroll. The previous version applied the animation on load, so
-      // everything had finished animating before you ever scrolled to it.
-      (function () {
-        var els = document.querySelectorAll('.reveal');
-        if (!('IntersectionObserver' in window) ||
-            window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-          els.forEach(function (el) { el.classList.add('in'); });
-          return;
-        }
-        var io = new IntersectionObserver(function (entries) {
-          entries.forEach(function (e) {
+    (function () {
+      var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      /* ── Reveal + stagger ──────────────────────────────────────────
+         Every .up animates itself; every .stagger hands its children an
+         increasing --d so they cascade instead of all landing at once. */
+      var targets = [].slice.call(document.querySelectorAll('.up, .stagger > *, .feature-media, .section-head, .faq details'));
+      document.querySelectorAll('.stagger').forEach(function (g) {
+        [].forEach.call(g.children, function (c, i) { c.style.setProperty('--d', (i * 70) + 'ms'); });
+      });
+
+      if (reduce || !('IntersectionObserver' in window)) {
+        targets.forEach(function (el) { el.classList.add('in'); });
+      } else {
+        var io = new IntersectionObserver(function (es) {
+          es.forEach(function (e) {
             if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
           });
-        }, { rootMargin: '0px 0px -10% 0px', threshold: 0.05 });
-        els.forEach(function (el) { io.observe(el); });
-      })();
+        }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+        targets.forEach(function (el) { el.classList.add('pre'); io.observe(el); });
+      }
 
-      // Shrink the header once you're past the hero.
-      (function () {
-        var h = document.querySelector('.site-header');
-        var onScroll = function () { h.classList.toggle('stuck', window.scrollY > 12); };
-        addEventListener('scroll', onScroll, { passive: true });
-        onScroll();
-      })();
+      /* ── Count-up on the stat tiles ────────────────────────────────── */
+      var nums = [].slice.call(document.querySelectorAll('[data-count]'));
+      if (reduce || !('IntersectionObserver' in window)) {
+        /* no-JS/reduced-motion: the markup already holds the real number */
+      } else {
+        var cio = new IntersectionObserver(function (es) {
+          es.forEach(function (e) {
+            if (!e.isIntersecting) return;
+            cio.unobserve(e.target);
+            var el = e.target, end = +el.dataset.count, t0 = null, dur = 1100;
+            requestAnimationFrame(function step(t) {
+              if (!t0) t0 = t;
+              var p = Math.min((t - t0) / dur, 1);
+              el.textContent = Math.round(end * (1 - Math.pow(1 - p, 3))); // easeOutCubic
+              if (p < 1) requestAnimationFrame(step);
+            });
+          });
+        }, { threshold: 0.5 });
+        nums.forEach(function (n) { n.textContent = '0'; cio.observe(n); });
+      }
+
+      /* ── Header state ──────────────────────────────────────────────── */
+      var h = document.querySelector('.site-header');
+      var onScroll = function () { h.classList.toggle('stuck', scrollY > 10); };
+      addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+
+      /* ── Hero parallax ─────────────────────────────────────────────
+         rAF-throttled and disabled on reduced-motion + coarse pointers,
+         where it costs battery and buys nothing. */
+      var stage = document.querySelector('.hero-stage');
+      if (stage && !reduce && matchMedia('(pointer: fine)').matches) {
+        var ticking = false, sy = 0;
+        addEventListener('scroll', function () {
+          sy = scrollY;
+          if (ticking) return;
+          ticking = true;
+          requestAnimationFrame(function () {
+            if (sy < 900) stage.style.transform = 'translate3d(0,' + (sy * 0.07) + 'px,0)';
+            ticking = false;
+          });
+        }, { passive: true });
+      }
+    })();
     </script>
   </body>
 </html>
