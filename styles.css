@@ -57,8 +57,8 @@ body {
 img { max-width: 100%; height: auto; display: block; }
 /* Several mascots sit in fixed-size slots inside narrower columns, where
    max-width:100% squashes the width while the height stays locked. */
-.orb, .ways li img, .streak-icons img, .streak-solo, .feature-media img,
-.hero-nutri, .safety > img, .founder-inner > img, .cta-mascot { object-fit: contain; }
+.orb, .streak-icons img, .streak-solo, .feature-media img,
+.hero-nutri, .safety > img, .msg-nutri, .cta-mascot { object-fit: contain; }
 a { color: inherit; -webkit-tap-highlight-color: transparent; }
 
 h1, h2, h3 { font-weight: 900; letter-spacing: -.032em; line-height: 1.04; margin: 0; }
@@ -185,7 +185,7 @@ p  { margin: 0 0 1rem; }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin: 1.7rem 0 .9rem; }
 .hero-note { font-size: .85rem; color: rgba(255,255,255,.95); margin: 0; font-weight: 500; }
 
-.hero-stage { position: relative; display: grid; place-items: center; min-height: 380px; will-change: transform; overflow: hidden; }
+.hero-stage { position: relative; display: grid; place-items: center; min-height: 460px; will-change: transform; overflow: hidden; }
 .halo {
   position: absolute; width: min(400px, 82%); aspect-ratio: 1; border-radius: 50%;
   background: radial-gradient(circle, rgba(255,255,255,.34), rgba(255,255,255,.08) 58%, transparent 70%);
@@ -209,24 +209,31 @@ p  { margin: 0 0 1rem; }
 .face.wink { opacity: 0; }
 .nutri-tap.winking .face.calm { opacity: 0; }
 .nutri-tap.winking .face.wink { opacity: 1; }
-/* Six characters drifting around the mascot. Each has its own path, duration,
-   direction and negative delay, so they never sync and never read as a loop.
-   Sizes are deliberately uneven — an even ring looks placed rather than alive. */
-.orb { position: absolute; filter: drop-shadow(0 10px 18px rgba(4,32,20,.3)); }
-@keyframes drift1 { 0%,100% { transform: translate(0,0) rotate(-6deg) }
-                    33%     { transform: translate(13px,-18px) rotate(4deg) }
-                    66%     { transform: translate(-9px,-7px) rotate(-2deg) } }
-@keyframes drift2 { 0%,100% { transform: translate(0,0) rotate(5deg) }
-                    40%     { transform: translate(-14px,-13px) rotate(-5deg) }
-                    75%     { transform: translate(7px,9px) rotate(2deg) } }
-@keyframes drift3 { 0%,100% { transform: translate(0,0) rotate(0deg) }
-                    50%     { transform: translate(9px,16px) rotate(7deg) } }
-.o1 { width: 16%; top: 5%;    left: 2%;   animation: drift1 11s   ease-in-out infinite; }
-.o2 { width: 13%; bottom: 12%; left: 5%;  animation: drift2 13s   ease-in-out -3s infinite; }
-.o3 { width: 18%; top: 2%;    right: 2%;  animation: drift3 9.5s  ease-in-out -5s infinite; }
-.o4 { width: 19%; bottom: 5%; right: 5%;  animation: drift1 14s   ease-in-out -7s infinite reverse; }
-.o5 { width: 18%; top: 45%;   left: 1%;   animation: drift2 10.5s ease-in-out -2s infinite reverse; }
-.o6 { width: 16%; top: 31%;   right: 1%;  animation: drift3 12.5s ease-in-out -8s infinite; }
+/* Eight characters orbiting the mascot. The wrapper spins about the stage
+   centre; the image counter-spins at the same rate so it never turns upside
+   down. Randomness comes from four independent knobs per orb — radius (--r),
+   period (--dur), start phase (--dl, a negative delay) and size (--sz) — with
+   half of them reversed. Nothing repeats visibly because no two periods share
+   a common factor. */
+.orbit {
+  position: absolute; inset: 0;            /* fills the stage, spins about its centre */
+  animation: orbit var(--dur, 30s) linear var(--dl, 0s) infinite;
+  pointer-events: none;
+}
+.orbit:nth-child(even) { animation-direction: reverse; }
+.orbit .orb {
+  position: absolute; top: 50%; left: 50%; width: var(--sz, 16%);
+  /* Radius via margin-left, NOT `left` — a percentage `left` resolves against
+     the wrapper's width, and a zero-width wrapper collapses every orb onto the
+     centre, invisible behind the mascot. Margin percentages resolve against the
+     parent's width, which is what we actually want. */
+  margin-left: var(--r, 44%);
+  transform: translate(-50%, -50%);
+  animation: orbit var(--dur, 30s) linear var(--dl, 0s) infinite reverse;
+  filter: drop-shadow(0 8px 16px rgba(4,32,20,.28));
+}
+.orbit:nth-child(even) .orb { animation-direction: normal; }
+@keyframes orbit { to { rotate: 360deg; } }
 
 /* ── Marquee strip ───────────────────────────────────────────────────── */
 .strip { background: var(--ink); color: #fff; padding: 15px 0; overflow: hidden; }
@@ -270,7 +277,21 @@ p  { margin: 0 0 1rem; }
 .ways li:hover { transform: translateY(-6px); border-color: var(--green); box-shadow: 0 18px 40px rgba(13,26,20,.09); }
 /* Images are pre-cropped to their content, so a fixed height gives every card
    identical optical weight — which raw exports absolutely did not. */
-.ways li img { width: 112px; height: auto; margin: 0 auto 14px; }
+/* A tinted squircle with an emoji reads far better at this size than a detailed
+   illustration scaled down to 100px. */
+.way-ico {
+  display: grid; place-items: center; width: 72px; height: 72px;
+  margin: 0 auto 14px; border-radius: 22px; font-size: 32px; line-height: 1;
+  background: var(--ico-bg, var(--green-soft));
+  box-shadow: inset 0 0 0 1px rgba(13,26,20,.06);
+}
+.c1 { --ico-bg: #ffe4e6; } .c2 { --ico-bg: #e0f2fe; } .c3 { --ico-bg: #ede9fe; }
+.c4 { --ico-bg: #fef3c7; } .c5 { --ico-bg: #d9f2e5; }
+@media (prefers-color-scheme: dark) {
+  .c1{--ico-bg:rgba(244,63,94,.18)} .c2{--ico-bg:rgba(14,165,233,.18)}
+  .c3{--ico-bg:rgba(139,92,246,.18)} .c4{--ico-bg:rgba(245,158,11,.18)}
+  .c5{--ico-bg:rgba(127,199,161,.18)}
+}
 .way-num { display: block; font-size: .72rem; font-weight: 900; letter-spacing: .12em; color: var(--green-600); margin-bottom: 6px; }
 @media (prefers-color-scheme: dark) { .way-num { color: var(--green); } }
 .ways h3 { margin-bottom: .5rem; }
@@ -287,6 +308,11 @@ p  { margin: 0 0 1rem; }
 .feature .feature-copy { position: relative; z-index: 2; }
 .feature-media { display: grid; place-items: center; }
 .feature-media img { width: min(520px, 116%); max-width: none; }
+/* Tuned per illustration — they do not all carry the same visual weight. */
+.f-eat .feature-media   { justify-items: start; margin-left: -14%; }
+.f-eat .feature-media img   { width: min(520px, 124%); }
+.f-gym .feature-media img   { width: min(370px, 84%); }
+.f-level .feature-media img { width: min(620px, 132%); }
 .feature:not(.flip) .feature-media { margin-left: -5%; }
 .feature.flip .feature-media { margin-right: -5%; }
 
@@ -329,12 +355,38 @@ p  { margin: 0 0 1rem; }
 .safety > div > p { color: var(--muted); }
 
 /* ── Founder ─────────────────────────────────────────────────────────── */
-.founder-inner { display: grid; grid-template-columns: minmax(0, 260px) 1fr; gap: clamp(20px, 4vw, 48px); align-items: center; max-width: 940px; }
-.founder-inner > img { width: min(300px, 110%); max-width: none; }
-.founder blockquote { margin: 0; border-left: 3px solid var(--green); padding-left: 26px; }
-.founder blockquote p { font-size: clamp(1.02rem, 3.4vw, 1.16rem); }
-.founder cite { display: block; font-style: normal; font-weight: 800; color: var(--green-600); margin-top: .4rem; }
-@media (prefers-color-scheme: dark) { .founder cite { color: var(--green); } }
+.msg { max-width: 760px; margin: 0 auto; }
+.msg summary {
+  list-style: none; cursor: pointer; display: grid; justify-items: center;
+  text-align: center; padding: 6px; border-radius: 26px;
+  transition: transform .3s var(--ease);
+}
+.msg summary::-webkit-details-marker { display: none; }
+.msg summary:active { transform: scale(.97); }
+.msg-nutri { width: min(230px, 56%); animation: float 7s ease-in-out infinite; }
+/* The sign hangs under Nutri, tilted, so it reads as an object he is holding
+   up rather than a heading that happens to sit there. */
+.msg-sign {
+  display: grid; justify-items: center; gap: 2px;
+  margin-top: -14px; padding: 16px 34px; border-radius: 18px;
+  background: var(--card); border: 2px solid var(--green);
+  box-shadow: 0 12px 30px rgba(13,26,20,.12);
+  rotate: -2deg; transition: rotate .3s var(--ease);
+}
+.msg summary:hover .msg-sign { rotate: 1deg; }
+.msg-sign b { font-size: clamp(1.2rem, 4.6vw, 1.7rem); font-weight: 900; letter-spacing: -.03em; }
+.msg-sign em { font-style: normal; font-size: .82rem; font-weight: 700; color: var(--green-600); letter-spacing: .04em; }
+@media (prefers-color-scheme: dark) { .msg-sign em { color: var(--green); } }
+.msg[open] .msg-sign em { opacity: .5; }
+.msg blockquote {
+  margin: 26px auto 0; max-width: 40rem; text-align: center;
+  border-top: 3px solid var(--green); padding-top: 24px;
+  animation: unfold .5s var(--ease);
+}
+@keyframes unfold { from { opacity: 0; transform: translateY(-10px) } to { opacity: 1; transform: none } }
+.msg blockquote p { font-size: clamp(1.02rem, 3.4vw, 1.16rem); }
+.msg cite { display: block; font-style: normal; font-weight: 800; color: var(--green-600); margin-top: .4rem; }
+@media (prefers-color-scheme: dark) { .msg cite { color: var(--green); } }
 
 /* ── Pricing ─────────────────────────────────────────────────────────── */
 .plans { display: grid; grid-template-columns: repeat(auto-fit, minmax(226px, 1fr)); gap: 16px; }
@@ -432,9 +484,9 @@ p  { margin: 0 0 1rem; }
   .feature.flip .feature-copy { order: 0; }
   .feature-media { order: -1; }
   .streaks { grid-template-columns: 1fr; }
-  .safety, .founder-inner { grid-template-columns: 1fr; text-align: center; }
-  .safety > img, .founder-inner > img { width: min(300px, 70%); margin-inline: auto; }
-  .founder blockquote { border-left: 0; border-top: 3px solid var(--green); padding: 20px 0 0; }
+  .safety { grid-template-columns: 1fr; text-align: center; }
+  .safety > img { width: min(300px, 70%); margin-inline: auto; }
+  .f-eat .feature-media { justify-items: center; margin-left: 0; }
   .fineprint.left { text-align: center; }
   .privacy-layout { grid-template-columns: 1fr; gap: 24px; }
   .privacy-toc { position: static; }
@@ -445,18 +497,18 @@ p  { margin: 0 0 1rem; }
   body { font-size: 16px; }
   .site-nav { display: none; }
   .btn-sm { margin-left: auto; }
-  .hero-stage { min-height: 330px; }
+  .hero-stage { min-height: 380px; }
   .nutri-tap { width: min(270px, 64%); }
   /* Orbs stay inside the frame on phones, with enough inset to absorb their own
      drift (~16px) — otherwise the animation itself pushes them past the edge. */
-  .o1 { width: 15%; top: 4%;    left: 4%;  }
-  .o2 { width: 13%; bottom: 14%; left: 6%; }
-  .o3 { width: 16%; top: 2%;    right: 4%; }
-  .o4 { width: 17%; bottom: 7%; right: 7%; }
-  .o5 { width: 15%; top: 46%;   left: 5%;  }
-  .o6 { width: 14%; top: 32%;   right: 6%; }
-  .ways li img { width: 96px; }
-  .feature-media img { width: min(430px, 100%); }
+  .orbit .orb { width: calc(var(--sz, 16%) * 1.15); }
+  .way-ico { width: 62px; height: 62px; font-size: 27px; border-radius: 19px; }
+  .feature-media img,
+  .f-eat .feature-media img,
+  .f-gym .feature-media img,
+  .f-level .feature-media img { width: min(430px, 100%); }
+  .f-gym .feature-media img   { width: min(330px, 76%); }
+  .f-level .feature-media img { width: min(430px, 100%); }
   /* Copy climbs over the artwork rather than sitting politely beneath it. */
   .feature .feature-copy { margin-top: -30px; }
   .feature:not(.flip) .feature-media, .feature.flip .feature-media { margin-inline: 0; }
@@ -474,8 +526,8 @@ p  { margin: 0 0 1rem; }
   .hero-actions .appstore-badge { justify-content: center; }
   .btn-ghost { text-align: center; min-height: 46px; }
   .ways { grid-template-columns: 1fr; }
-  .ways li { display: grid; grid-template-columns: 92px 1fr; gap: 16px; text-align: left; align-items: center; padding: 18px 16px; }
-  .ways li img { width: 92px; height: auto; margin: 0; grid-row: span 3; }
+  .ways li { display: grid; grid-template-columns: 58px 1fr; gap: 16px; text-align: left; align-items: center; padding: 18px 16px; }
+  .ways li .way-ico { width: 58px; height: 58px; font-size: 25px; margin: 0; grid-row: span 3; }
   .way-num { margin-bottom: 2px; }
   .tile em { display: none; }             /* keep the 2-up grid legible at 375px */
   .strip-run { font-size: .74rem; gap: 12px; }
