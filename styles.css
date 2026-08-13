@@ -209,18 +209,21 @@ p  { margin: 0 0 1rem; }
   background: radial-gradient(circle, rgba(255,255,255,.34), rgba(255,255,255,.08) 58%, transparent 70%);
   animation: pulse 6s ease-in-out infinite;
 }
+@keyframes nutriwobble { 0%, 100% { rotate: -2deg; } 50% { rotate: 2deg; } }
 @keyframes pulse { 0%,100% { transform: scale(1); opacity: .85 } 50% { transform: scale(1.09); opacity: 1 } }
 .nutri-tap {
   position: relative; display: block; padding: 0; border: 0; background: none;
   cursor: pointer; -webkit-tap-highlight-color: transparent;
-  width: min(300px, 66%); aspect-ratio: 455 / 362;  /* 380 upscaled the 455px art 1.67x on retina */
+  width: min(240px, 60%); aspect-ratio: 455 / 362;  /* 455px art: 240 = 0.95 of retina, 300 was 0.76 */
   transition: transform .35s var(--ease);
 }
 .nutri-tap:active { transform: scale(.95) rotate(-1.5deg); }
 .hero-nutri {
   position: absolute; inset: 0; width: 100%; height: 100%;
   filter: drop-shadow(0 26px 40px rgba(4,32,20,.34));
-  animation: float 7.5s ease-in-out infinite;
+  /* Rotates in place rather than drifting: owner wants him to turn, not move. On the `rotate`
+     property so it cannot disturb layout or fight .nutri-tap:active's transform. */
+  animation: nutriwobble 9s ease-in-out infinite;
   transition: opacity .18s ease;
 }
 /* Calm by default; tap or hold and Nutri winks back. */
@@ -244,7 +247,11 @@ p  { margin: 0 0 1rem; }
   position: absolute; top: 50%; left: 50%;
   width: 100cqmin; height: 100cqmin;
   translate: -50% -50%;
-  animation: orbit var(--dur, 30s) linear var(--dl, 0s) infinite var(--dir, normal);
+  /* Two animations, two DIFFERENT properties: `rotate` carries the orbit, `scale` makes the
+     ring breathe. They compose. (Two animations on the SAME property would not — the later
+     one simply wins, which is the trap that made self-spin non-trivial on .orb-spin.) */
+  animation: orbit var(--dur, 30s) linear var(--dl, 0s) infinite var(--dir, normal),
+             ringbreathe var(--breathe, 14s) ease-in-out infinite;
   pointer-events: none;
 }
 /* Holder: carries the radius and the counter-spin that keeps a character upright.
@@ -268,6 +275,8 @@ p  { margin: 0 0 1rem; }
   filter: drop-shadow(0 8px 16px rgba(4,32,20,.28));
 }
 @keyframes orbit { to { rotate: 360deg; } }
+/* Swell is budgeted into the radii: r*1.06 + half-diagonal stays under 47% of the square. */
+@keyframes ringbreathe { 0%, 100% { scale: 1; } 50% { scale: var(--swell, 1.06); } }
 
 /* ── Marquee strip ───────────────────────────────────────────────────── */
 .strip { background: var(--ink); color: #fff; padding: 15px 0; overflow: hidden; }
@@ -586,6 +595,7 @@ p  { margin: 0 0 1rem; }
   /* Stopping the ring is not enough: with the animation dead every wrapper falls back to
      rotate:0 and all twelve characters stack on top of each other at 3 o'clock. --rest is
      each orb's parked angle (30deg apart), so motion-off is a still ring rather than a pile. */
-  .orbit { animation: none !important; rotate: var(--rest, 0deg); }
+  .orbit { animation: none !important; rotate: var(--rest, 0deg); scale: 1 !important; }
+  .hero-nutri { animation: none !important; rotate: 0deg !important; }
   .orb-spin, .orb { animation: none !important; }
 }
