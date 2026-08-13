@@ -195,7 +195,15 @@ p  { margin: 0 0 1rem; }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin: 1.7rem 0 .9rem; }
 .hero-note { font-size: .85rem; color: rgba(255,255,255,.95); margin: 0; font-weight: 500; }
 
-.hero-stage { position: relative; display: grid; place-items: center; min-height: 460px; will-change: transform; overflow: hidden; }
+.hero-stage {
+  position: relative; display: grid; place-items: center;
+  height: 460px; will-change: transform; overflow: hidden;
+  /* container-type:size makes 100cqmin on .orbit resolve to min(width,height) of THIS box.
+     It MUST be an explicit `height`, not `min-height`: with only a min-height the block size
+     is indefinite, cqmin/cqh resolve to 0, and every orb collapses to 0x0 and disappears.
+     Verified with a minimal repro — swap height for min-height and the ring vanishes. */
+  container-type: size;
+}
 .halo {
   position: absolute; width: min(400px, 82%); aspect-ratio: 1; border-radius: 50%;
   background: radial-gradient(circle, rgba(255,255,255,.34), rgba(255,255,255,.08) 58%, transparent 70%);
@@ -205,7 +213,7 @@ p  { margin: 0 0 1rem; }
 .nutri-tap {
   position: relative; display: block; padding: 0; border: 0; background: none;
   cursor: pointer; -webkit-tap-highlight-color: transparent;
-  width: min(380px, 78%); aspect-ratio: 455 / 362;
+  width: min(300px, 66%); aspect-ratio: 455 / 362;  /* 380 upscaled the 455px art 1.67x on retina */
   transition: transform .35s var(--ease);
 }
 .nutri-tap:active { transform: scale(.95) rotate(-1.5deg); }
@@ -225,24 +233,40 @@ p  { margin: 0 0 1rem; }
    period (--dur), start phase (--dl, a negative delay) and size (--sz) — with
    half of them reversed. Nothing repeats visibly because no two periods share
    a common factor. */
+/* The ring is a SQUARE of side min(stage width, stage height), centred — not `inset:0`.
+   An orbit is a circle, but a percentage margin resolves against WIDTH only, so on a
+   wide stage the circle was taller than the box and got shaved top and bottom by
+   .hero-stage's overflow:hidden. Worst between 720 and 940px, where the hero is one
+   column (~900 wide) but min-height is only 320: every radius exceeded the half-height
+   and the characters vanished for most of each lap. 100cqmin is exactly min(w,h), so
+   the ring can never be taller than the box it lives in. */
 .orbit {
-  position: absolute; inset: 0;            /* fills the stage, spins about its centre */
-  animation: orbit var(--dur, 30s) linear var(--dl, 0s) infinite;
+  position: absolute; top: 50%; left: 50%;
+  width: 100cqmin; height: 100cqmin;
+  translate: -50% -50%;
+  animation: orbit var(--dur, 30s) linear var(--dl, 0s) infinite var(--dir, normal);
   pointer-events: none;
 }
-.orbit:nth-child(even) { animation-direction: reverse; }
+/* Holder: carries the radius and the counter-spin that keeps a character upright.
+   Centring is on the `translate` PROPERTY, not transform. CSS applies
+   translate -> rotate -> scale -> transform, so a transform-based -50%/-50% is applied
+   INSIDE any rotation and orbits with it. That was harmless only while the counter-spin
+   cancelled the ring exactly; adding a self-spin breaks the cancellation and each orb
+   picks up a parasitic epicycle (~58px on the widest art) that throws it off-frame.
+   On `translate` it is applied first and is immune. */
+.orb-spin {
+  position: absolute; top: 50%; left: 50%;
+  width: var(--sz, 14%);
+  margin-left: var(--r, 32%);
+  translate: -50% -50%;
+  animation: orbit var(--dur, 30s) linear var(--dl, 0s) infinite var(--cdir, reverse);
+}
+/* The character's own tumble, on its own element so it never fights the counter-spin. */
 .orbit .orb {
-  position: absolute; top: 50%; left: 50%; width: var(--sz, 16%);
-  /* Radius via margin-left, NOT `left` — a percentage `left` resolves against
-     the wrapper's width, and a zero-width wrapper collapses every orb onto the
-     centre, invisible behind the mascot. Margin percentages resolve against the
-     parent's width, which is what we actually want. */
-  margin-left: var(--r, 44%);
-  transform: translate(-50%, -50%);
-  animation: orbit var(--dur, 30s) linear var(--dl, 0s) infinite reverse;
+  display: block; width: 100%; height: auto;
+  animation: orbit var(--spin, 16s) linear infinite var(--sdir, normal);
   filter: drop-shadow(0 8px 16px rgba(4,32,20,.28));
 }
-.orbit:nth-child(even) .orb { animation-direction: normal; }
 @keyframes orbit { to { rotate: 360deg; } }
 
 /* ── Marquee strip ───────────────────────────────────────────────────── */
@@ -493,7 +517,9 @@ p  { margin: 0 0 1rem; }
   .hero-copy { max-width: none; margin: 0 auto; }
   .lead { margin-inline: auto; }
   .hero-actions { justify-content: center; }
-  .hero-stage { min-height: 320px; margin-top: 22px; order: -1; }
+  /* One column here, so the stage is ~900 wide but its HEIGHT sets 100cqmin. 320 (and
+     even 400) made the ring smaller than the mascot, hiding every orb behind it. */
+  .hero-stage { height: 440px; margin-top: 22px; order: -1; }
   .feature, .feature.flip { grid-template-columns: 1fr; }
   .feature.flip .feature-copy { order: 0; }
   .feature-media { order: -1; }
@@ -511,11 +537,11 @@ p  { margin: 0 0 1rem; }
   body { font-size: 16px; }
   .site-nav { display: none; }
   .btn-sm { margin-left: auto; }
-  .hero-stage { min-height: 380px; }
+  .hero-stage { height: 380px; }
   .nutri-tap { width: min(270px, 64%); }
-  /* Orbs stay inside the frame on phones, with enough inset to absorb their own
-     drift (~16px) — otherwise the animation itself pushes them past the edge. */
-  .orbit .orb { width: calc(var(--sz, 16%) * 1.15); }
+  /* The old rule here multiplied every orb by 1.15 "to absorb drift". The drift keyframe
+     it referred to no longer exists, and making orbs 15% bigger increased the very overflow
+     it claimed to prevent. Sizing is now handled by 100cqmin on .orbit. */
   .way-ico { width: 62px; height: 62px; font-size: 27px; border-radius: 19px; }
   .feature-media img,
   .f-eat .feature-media img,
@@ -557,5 +583,9 @@ p  { margin: 0 0 1rem; }
   }
   .pre, .up { opacity: 1 !important; transform: none !important; }
   .hero-stage { transform: none !important; }
-  .orb { animation: none !important; }
+  /* Stopping the ring is not enough: with the animation dead every wrapper falls back to
+     rotate:0 and all twelve characters stack on top of each other at 3 o'clock. --rest is
+     each orb's parked angle (30deg apart), so motion-off is a still ring rather than a pile. */
+  .orbit { animation: none !important; rotate: var(--rest, 0deg); }
+  .orb-spin, .orb { animation: none !important; }
 }

@@ -77,14 +77,23 @@
               <img src="public/m-hero.png" alt="" class="hero-nutri face calm" width="455" height="362" fetchpriority="high" />
               <img src="public/m-hero-wink.png" alt="" class="hero-nutri face wink" width="560" height="453" loading="lazy" />
             </button>
-            <span class="orbit" style="--r:33%;--dur:26s;--dl:-0s;--sz:15%"><img src="public/m-flame.png" alt="" class="orb" loading="lazy" /></span>
-            <span class="orbit" style="--r:38%;--dur:34s;--dl:-9s;--sz:17%"><img src="public/m-trophy.png" alt="" class="orb" loading="lazy" /></span>
-            <span class="orbit" style="--r:29%;--dur:22s;--dl:-5s;--sz:13%"><img src="public/m-flame-blue.png" alt="" class="orb" loading="lazy" /></span>
-            <span class="orbit" style="--r:40%;--dur:30s;--dl:-17s;--sz:18%"><img src="public/m-camera.png" alt="" class="orb" loading="lazy" /></span>
-            <span class="orbit" style="--r:32%;--dur:38s;--dl:-23s;--sz:16%"><img src="public/m-cook.png" alt="" class="orb" loading="lazy" /></span>
-            <span class="orbit" style="--r:36%;--dur:28s;--dl:-12s;--sz:15%"><img src="public/m-globe.png" alt="" class="orb" loading="lazy" /></span>
-            <span class="orbit" style="--r:27%;--dur:42s;--dl:-31s;--sz:14%"><img src="public/m-scan.png" alt="" class="orb" loading="lazy" /></span>
-            <span class="orbit" style="--r:39%;--dur:24s;--dl:-3s;--sz:16%"><img src="public/m-type.png" alt="" class="orb" loading="lazy" /></span>
+            <!-- Twelve characters. Each knob is explicit per orb so nothing depends on
+                 sibling order: --dir spins the ring, --cdir counter-spins the holder to keep
+                 the character upright, --spin/--sdir give it its own tumble, and --rest is
+                 where it parks when motion is off. Radii obey r + 0.85*sz <= 46 so the whole
+                 circle plus the orb's half-diagonal stays inside the square. -->
+            <span class="orbit" style="--r:36%;--dur:26s;--dl:-0s;--sz:13%;--dir:normal;--cdir:reverse;--spin:15s;--sdir:normal;--rest:0deg"><span class="orb-spin"><img src="public/m-flame.png" alt="" class="orb" loading="lazy" /></span></span>
+            <span class="orbit" style="--r:39%;--dur:34s;--dl:-9s;--sz:14%;--dir:reverse;--cdir:normal;--spin:19s;--sdir:reverse;--rest:30deg"><span class="orb-spin"><img src="public/m-trophy.png" alt="" class="orb" loading="lazy" /></span></span>
+            <span class="orbit" style="--r:38%;--dur:22s;--dl:-5s;--sz:12%;--dir:normal;--cdir:reverse;--spin:11s;--sdir:reverse;--rest:60deg"><span class="orb-spin"><img src="public/m-flame-blue.png" alt="" class="orb" loading="lazy" /></span></span>
+            <span class="orbit" style="--r:38%;--dur:30s;--dl:-17s;--sz:14%;--dir:reverse;--cdir:normal;--spin:23s;--sdir:normal;--rest:90deg"><span class="orb-spin"><img src="public/m-camera.png" alt="" class="orb" loading="lazy" /></span></span>
+            <span class="orbit" style="--r:35%;--dur:38s;--dl:-23s;--sz:14%;--dir:normal;--cdir:reverse;--spin:17s;--sdir:normal;--rest:120deg"><span class="orb-spin"><img src="public/m-cook.png" alt="" class="orb" loading="lazy" /></span></span>
+            <span class="orbit" style="--r:39%;--dur:28s;--dl:-12s;--sz:13%;--dir:reverse;--cdir:normal;--spin:13s;--sdir:reverse;--rest:150deg"><span class="orb-spin"><img src="public/m-globe.png" alt="" class="orb" loading="lazy" /></span></span>
+            <span class="orbit" style="--r:37%;--dur:42s;--dl:-31s;--sz:12%;--dir:normal;--cdir:reverse;--spin:21s;--sdir:normal;--rest:180deg"><span class="orb-spin"><img src="public/m-scan.png" alt="" class="orb" loading="lazy" /></span></span>
+            <span class="orbit" style="--r:38%;--dur:24s;--dl:-3s;--sz:13%;--dir:reverse;--cdir:normal;--spin:16s;--sdir:reverse;--rest:210deg"><span class="orb-spin"><img src="public/m-type.png" alt="" class="orb" loading="lazy" /></span></span>
+            <span class="orbit" style="--r:36%;--dur:36s;--dl:-14s;--sz:12%;--dir:normal;--cdir:reverse;--spin:12s;--sdir:reverse;--rest:240deg"><span class="orb-spin"><img src="public/m-question.png" alt="" class="orb" loading="lazy" /></span></span>
+            <span class="orbit" style="--r:34%;--dur:44s;--dl:-27s;--sz:15%;--dir:reverse;--cdir:normal;--spin:25s;--sdir:normal;--rest:270deg"><span class="orb-spin"><img src="public/m-gym.png" alt="" class="orb" loading="lazy" /></span></span>
+            <span class="orbit" style="--r:37%;--dur:32s;--dl:-7s;--sz:14%;--dir:normal;--cdir:reverse;--spin:18s;--sdir:normal;--rest:300deg"><span class="orb-spin"><img src="public/m-skate.png" alt="" class="orb" loading="lazy" /></span></span>
+            <span class="orbit" style="--r:32%;--dur:40s;--dl:-19s;--sz:10%;--dir:reverse;--cdir:normal;--spin:14s;--sdir:reverse;--rest:330deg"><span class="orb-spin"><img src="public/m-eat.png" alt="" class="orb" loading="lazy" /></span></span>
           </div>
         </div>
       </section>
@@ -255,9 +264,9 @@
               </span>
             </summary>
             <blockquote>
-              <p>I tried every fitness app going. They all felt like a chore — boring, forgettable.</p>
-              <p>So I built my own. Achievements, XP, streaks — and Nutri cheering you on.</p>
-              <cite>The app I wished existed. Built different, on purpose.</cite>
+              <p>Hi. I'm Nutri. I live in your phone and I keep count so you don't have to.</p>
+              <p>Snap your dinner, I'll do the maths. Miss a day and I'll hold your streak. Hit a target and you'll hear about it — loudly.</p>
+              <cite>See you at breakfast. — Nutri</cite>
             </blockquote>
           </details>
         </div>
