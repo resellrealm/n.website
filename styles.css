@@ -122,6 +122,13 @@ p  { margin: 0 0 1rem; }
 .site-nav { margin-left: auto; display: flex; gap: 26px; }
 .site-nav a { text-decoration: none; font-weight: 600; font-size: .92rem; color: var(--muted); transition: color .2s; }
 .site-nav a:hover { color: var(--ink); }
+/* Over the green hero the header is transparent, so --muted lands at 2.4-2.8:1 —
+   below WCAG AA 4.5:1. Must be a LITERAL, not var(--ink): the hero gradient (L173)
+   is hardcoded hex and identical in both themes, but --ink flips to #eef5f1 in dark
+   mode, which measures 1.98:1 on this green — the worst option of all. #0d1a14
+   clears AA on all three gradient stops (5.05 / 7.46 / 9.01) in either theme.
+   Once .stuck paints the --bg background, the --muted rule above is correct again. */
+.site-header:not(.stuck) .site-nav a { color: #0d1a14; }
 
 .btn {
   display: inline-flex; align-items: center; justify-content: center;
@@ -268,7 +275,9 @@ p  { margin: 0 0 1rem; }
 .fineprint.left { text-align: left; margin-inline: 0; }
 
 /* ── Five ways ───────────────────────────────────────────────────────── */
-.ways { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(215px, 1fr)); gap: 16px; }
+/* 195px, not 215px: five cards at 215 + four 16px gaps needs 1139px against a
+   ~1100px container, so the fifth card orphaned onto its own row. */
+.ways { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(195px, 1fr)); gap: 16px; }
 .ways li {
   position: relative; background: var(--card); border: 1px solid var(--line);
   border-radius: var(--radius); padding: 22px 20px 24px; text-align: center;
