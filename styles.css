@@ -64,7 +64,10 @@ a { color: inherit; -webkit-tap-highlight-color: transparent; }
 h1, h2, h3 { font-weight: 900; letter-spacing: -.032em; line-height: 1.04; margin: 0; }
 h1 { font-size: clamp(2.4rem, 8.4vw, 4.2rem); }
 h2 { font-size: clamp(1.9rem, 6.2vw, 3rem); }
-h3 { font-size: 1.1rem; letter-spacing: -.012em; }
+/* 1.04 above is display leading — correct for h1/h2 at 2.4–4.2rem, wrong here. h3 is
+   body-sized (1.1rem = 17.6px) and reads as a card title, so it needs real leading;
+   the probe measured 1.04 on ten of them. */
+h3 { font-size: 1.1rem; letter-spacing: -.012em; line-height: 1.35; }
 p  { margin: 0 0 1rem; }
 
 .container { width: 100%; max-width: var(--maxw); margin: 0 auto; padding-inline: var(--gutter); }
@@ -103,7 +106,7 @@ p  { margin: 0 0 1rem; }
   box-shadow: 0 1px 0 var(--line);
 }
 .header-inner { display: flex; align-items: center; gap: 18px; }
-.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; min-height: 44px; }
 /* The app icon's background is #7fc7a1 — byte-identical to the middle stop of
    the hero gradient (contrast 1.00:1). Sitting on the hero it disappears
    completely, leaving a floating white blob, and because the gradient animates
@@ -140,7 +143,7 @@ p  { margin: 0 0 1rem; }
 }
 .btn:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(16,185,129,.4); }
 .btn:active { transform: translateY(0) scale(.97); }
-.btn-sm { padding: 9px 18px; font-size: .9rem; min-height: 40px; }
+.btn-sm { padding: 9px 18px; font-size: .9rem; min-height: 44px; }  /* 40 was under the HIG floor */
 /* #10b981 on the hero gradient is 1.06:1 — the button shape vanishes and only
    its label survives. While the header is transparent (i.e. over the hero) the
    CTA goes white-on-green; once .stuck gives the header a solid background the
@@ -259,7 +262,7 @@ p  { margin: 0 0 1rem; }
 .section.alt { background: var(--bg-alt); }
 .section-head { max-width: 40rem; margin: 0 auto clamp(32px, 6vw, 54px); text-align: center; }
 .section-sub { color: var(--muted); margin-top: 1.05rem; font-size: 1.02rem; }
-.eyebrow { font-size: .71rem; font-weight: 800; text-transform: uppercase; letter-spacing: .17em; margin: 0 0 .85rem; color: rgba(255,255,255,.8); }
+.eyebrow { font-size: .75rem; font-weight: 800; text-transform: uppercase; letter-spacing: .17em; margin: 0 0 .85rem; color: rgba(255,255,255,.8); }
 .eyebrow.dark { color: var(--green-600); }
 @media (prefers-color-scheme: dark) { .eyebrow.dark { color: var(--green); } }
 
@@ -301,7 +304,7 @@ p  { margin: 0 0 1rem; }
   .c3{--ico-bg:rgba(139,92,246,.18)} .c4{--ico-bg:rgba(245,158,11,.18)}
   .c5{--ico-bg:rgba(127,199,161,.18)}
 }
-.way-num { display: block; font-size: .72rem; font-weight: 900; letter-spacing: .12em; color: var(--green-600); margin-bottom: 6px; }
+.way-num { display: block; font-size: .75rem; font-weight: 900; letter-spacing: .12em; color: var(--green-600); margin-bottom: 6px; }
 @media (prefers-color-scheme: dark) { .way-num { color: var(--green); } }
 .ways h3 { margin-bottom: .5rem; }
 .ways p { color: var(--muted); font-size: .92rem; margin: 0; }
@@ -438,7 +441,9 @@ p  { margin: 0 0 1rem; }
 .footer-brand strong { display: block; font-weight: 900; }
 .footer-brand p { margin: 0; color: var(--muted); font-size: .87rem; }
 .footer-links { display: flex; flex-wrap: wrap; gap: 10px 20px; }
-.footer-links a { text-decoration: none; color: var(--muted); font-size: .89rem; font-weight: 600; padding: 6px 0; }
+/* min-height 44px is the Apple HIG floor. padding:6px 0 gave these a 35px hit area —
+   seven footer links, every one under the floor, measured at 390px. */
+.footer-links a { text-decoration: none; color: var(--muted); font-size: .89rem; font-weight: 600; padding: 6px 0; min-height: 44px; display: inline-flex; align-items: center; }
 .footer-links a:hover { color: var(--ink); }
 .footer-legal { margin-top: 26px; padding-top: 20px; border-top: 1px solid var(--line); }
 .footer-legal p { color: var(--muted); font-size: .79rem; margin: 0; max-width: 62rem; }
@@ -539,7 +544,7 @@ p  { margin: 0 0 1rem; }
   .ways li .way-ico { width: 58px; height: 58px; font-size: 25px; margin: 0; grid-row: span 3; }
   .way-num { margin-bottom: 2px; }
   .tile em { display: none; }             /* keep the 2-up grid legible at 375px */
-  .strip-run { font-size: .74rem; gap: 12px; }
+  .strip-run { font-size: .8rem; gap: 12px; }   /* .74rem = 11.8px, under the 12px floor */
 }
 
 /* ── Motion off ──────────────────────────────────────────────────────── */
