@@ -139,6 +139,10 @@ const PROBE = String.raw`(() => {
   const de = document.documentElement, vw = de.clientWidth, TOL = 1.5;
   const out = { vw, overflow: [], tiny: [], taps: [], tight: [] };
 
+  // Anything inside an aria-hidden subtree is decorative — the phone mockup in the tour
+  // renders real UI at phone scale, so its 8px labels are correct, not a legibility bug.
+  // Flagging them would bury the findings that matter.
+  const decorative = (el) => !!el.closest('[aria-hidden="true"]');
   const seen = (el) => {
     const cs = getComputedStyle(el);
     if (cs.display === 'none' || cs.visibility === 'hidden' || cs.opacity === '0') return false;
@@ -176,6 +180,7 @@ const PROBE = String.raw`(() => {
   for (const el of document.querySelectorAll('p,li,a,span,b,em,h1,h2,h3,h4,summary,button,div')) {
     if (!seen(el)) continue;
     if (!el.textContent.trim() || el.children.length) continue;
+    if (decorative(el)) continue;
     const cs = getComputedStyle(el);
     const fs = parseFloat(cs.fontSize);
     // Tracked uppercase micro-labels (eyebrows, ticker chips) are a deliberate
