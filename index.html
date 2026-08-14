@@ -23,7 +23,6 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preload" as="image" href="public/m-hero.png" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
   </head>
@@ -71,28 +70,6 @@
             <p class="hero-note up" style="--d:380ms">iPhone · 3-day free trial · cancel anytime</p>
           </div>
 
-          <div class="hero-stage" aria-hidden="true">
-            <div class="halo"></div>
-            <button class="nutri-tap" type="button" aria-label="Poke Nutri">
-              <img src="public/m-hero.png" alt="" class="hero-nutri face calm" width="455" height="362" fetchpriority="high" />
-              <img src="public/m-hero-wink.png" alt="" class="hero-nutri face wink" width="560" height="453" loading="lazy" />
-            </button>
-            <!-- 9 characters, widely spaced. Both numbers are a search result, not a
-                 guess: the generator maximises orb SIZE subject to a hard floor on the
-                 tightest edge-to-edge gap (>=3%) and r*1.06 + half-diagonal <= 48% of the
-                 square. 14 orbs could be spread OR legible, not both -- the annulus
-                 between the 240px mascot and the 48% ceiling is only ~22% wide.
-                 Reach 47.9%, gap 7.3%. -->
-            <span class="orbit" style="--r:32.0%;--dur:27s;--dl:0s;--sz:10%;--dir:normal;--cdir:reverse;--spin:12s;--sdir:reverse;--breathe:14s;--rest:0.0deg"><span class="orb-spin"><img src="public/m-flame.png" alt="" class="orb" loading="lazy" /></span></span>
-            <span class="orbit" style="--r:34.5%;--dur:34s;--dl:-11s;--sz:8%;--dir:reverse;--cdir:normal;--spin:17s;--sdir:normal;--breathe:17s;--rest:40.0deg"><span class="orb-spin"><img src="public/m-flame-blue.png" alt="" class="orb" loading="lazy" /></span></span>
-            <span class="orbit" style="--r:37.0%;--dur:41s;--dl:-22s;--sz:9%;--dir:normal;--cdir:reverse;--spin:22s;--sdir:normal;--breathe:20s;--rest:80.0deg"><span class="orb-spin"><img src="public/m-trophy.png" alt="" class="orb" loading="lazy" /></span></span>
-            <span class="orbit" style="--r:32.0%;--dur:28s;--dl:-5s;--sz:7%;--dir:reverse;--cdir:normal;--spin:14s;--sdir:reverse;--breathe:15s;--rest:120.0deg"><span class="orb-spin"><img src="public/m-camera.png" alt="" class="orb" loading="lazy" /></span></span>
-            <span class="orbit" style="--r:34.5%;--dur:35s;--dl:-9s;--sz:10%;--dir:normal;--cdir:reverse;--spin:19s;--sdir:normal;--breathe:18s;--rest:160.0deg"><span class="orb-spin"><img src="public/m-cook.png" alt="" class="orb" loading="lazy" /></span></span>
-            <span class="orbit" style="--r:37.0%;--dur:42s;--dl:-13s;--sz:8%;--dir:reverse;--cdir:normal;--spin:24s;--sdir:normal;--breathe:21s;--rest:200.0deg"><span class="orb-spin"><img src="public/m-scan.png" alt="" class="orb" loading="lazy" /></span></span>
-            <span class="orbit" style="--r:32.0%;--dur:29s;--dl:-8s;--sz:9%;--dir:normal;--cdir:reverse;--spin:16s;--sdir:reverse;--breathe:16s;--rest:240.0deg"><span class="orb-spin"><img src="public/m-gym.png" alt="" class="orb" loading="lazy" /></span></span>
-            <span class="orbit" style="--r:34.5%;--dur:36s;--dl:-5s;--sz:7%;--dir:reverse;--cdir:normal;--spin:21s;--sdir:normal;--breathe:19s;--rest:280.0deg"><span class="orb-spin"><img src="public/m-eat.png" alt="" class="orb" loading="lazy" /></span></span>
-            <span class="orbit" style="--r:37.0%;--dur:43s;--dl:-2s;--sz:10%;--dir:normal;--cdir:reverse;--spin:13s;--sdir:normal;--breathe:14s;--rest:320.0deg"><span class="orb-spin"><img src="public/m-thrown.webp" alt="" class="orb" loading="lazy" /></span></span>
-          </div>
         </div>
       </section>
 
@@ -510,41 +487,12 @@
         nums.forEach(function (n) { n.textContent = '0'; cio.observe(n); });
       }
 
-      /* ── Poke Nutri: hold to wink ──────────────────────────────────── */
-      var tap = document.querySelector('.nutri-tap');
-      if (tap) {
-        var winkT;
-        var wink = function () {
-          tap.classList.add('winking');
-          clearTimeout(winkT);
-          winkT = setTimeout(function () { tap.classList.remove('winking'); }, 420);
-        };
-        tap.addEventListener('pointerdown', wink);
-        tap.addEventListener('click', function (e) { e.preventDefault(); wink(); });
-      }
-
       /* ── Header state ──────────────────────────────────────────────── */
       var h = document.querySelector('.site-header');
       var onScroll = function () { h.classList.toggle('stuck', scrollY > 10); };
       addEventListener('scroll', onScroll, { passive: true });
       onScroll();
 
-      /* ── Hero parallax ─────────────────────────────────────────────
-         rAF-throttled and disabled on reduced-motion + coarse pointers,
-         where it costs battery and buys nothing. */
-      var stage = document.querySelector('.hero-stage');
-      if (stage && !reduce && matchMedia('(pointer: fine)').matches) {
-        var ticking = false, sy = 0;
-        addEventListener('scroll', function () {
-          sy = scrollY;
-          if (ticking) return;
-          ticking = true;
-          requestAnimationFrame(function () {
-            if (sy < 900) stage.style.transform = 'translate3d(0,' + (sy * 0.07) + 'px,0)';
-            ticking = false;
-          });
-        }, { passive: true });
-      }
     })();
     </script>
   </body>
