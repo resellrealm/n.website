@@ -616,3 +616,74 @@ p  { margin: 0 0 1rem; }
      rotate:0 and all twelve characters stack on top of each other at 3 o'clock. --rest is
      each orb's parked angle (30deg apart), so motion-off is a still ring rather than a pile. */
 }
+
+
+/* ── Scroll-linked layer (desktop) ───────────────────────────────────────
+   Everything here is native CSS scroll-driven animation: no library, no scroll
+   listener, no JS at all. Guarded three ways —
+     @supports  : browsers without scroll timelines get today's page, untouched
+     min-width  : phones keep the plain layout; this is a desktop treatment
+     reduced-motion : opt out entirely
+   Deliberately NOT applied to .up elements: those are driven by the existing
+   IntersectionObserver, and two systems animating one property means the later
+   one silently wins. This layer only touches properties nothing else owns. */
+.scroll-rail { display: none; }
+
+@supports (animation-timeline: scroll()) {
+  @media (min-width: 941px) and (prefers-reduced-motion: no-preference) {
+
+    /* 1 — progress. podium.global opens on a counting preloader; the same idea,
+       but tied to reading position rather than load, and far quieter. */
+    .scroll-rail {
+      display: block; position: fixed; inset: 0 0 auto 0; height: 2px; z-index: 60;
+      background: transparent; pointer-events: none;
+    }
+    .scroll-rail i {
+      display: block; height: 100%; width: 100%; transform-origin: 0 50%;
+      background: linear-gradient(90deg, var(--green-500), var(--cta));
+      animation: railGrow linear both;
+      animation-timeline: scroll(root block);
+    }
+    @keyframes railGrow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+
+    /* 2 — parallax on the feature artwork. Uses the `translate` PROPERTY, which
+       composes with .float's `transform` instead of overwriting it. */
+    .feature-media img {
+      animation: artDrift linear both;
+      animation-timeline: view();
+      animation-range: entry 0% exit 100%;
+    }
+    @keyframes artDrift { from { translate: 0 46px; } to { translate: 0 -46px; } }
+
+    /* 3 — the copy rises to meet it, at a different rate. The offset between the
+       two is what reads as depth. */
+    .feature-copy {
+      animation: copyRise linear both;
+      animation-timeline: view();
+      animation-range: entry 10% cover 45%;
+    }
+    /* Movement only, never opacity. An animation outranks the class-based reveal, so if a
+       scroll range failed to advance for any reason this would be the ONLY thing deciding
+       visibility — and the failure mode would be invisible copy. Motion degrades to "no
+       motion"; opacity degrades to "no content". Never let scroll position be the sole
+       thing making text visible. */
+    @keyframes copyRise { from { translate: 0 34px; } to { translate: 0 0; } }
+
+    /* 4 — the tour phone settles as it comes into play, so the pinned section
+       feels like it engages rather than just appearing. */
+    .tour-phone {
+      animation: phoneSettle linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 30%;
+    }
+    @keyframes phoneSettle { from { scale: .92; translate: 0 30px; } to { scale: 1; translate: 0 0; } }
+
+    /* 5 — the reward tiles fan in across the grid rather than all at once. */
+    .tiles .tile {
+      animation: tileIn linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 25%;
+    }
+    @keyframes tileIn { from { translate: 0 26px; } to { translate: 0 0; } }   /* movement only — see copyRise */
+  }
+}
