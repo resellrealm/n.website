@@ -2,5 +2,17 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "cleanUrls": true,
   "trailingSlash": false,
-  "outputDirectory": "."
+  "outputDirectory": ".",
+  "redirects": [
+    {
+      "source": "/app",
+      "destination": "https://apps.apple.com/gb/app/nutrio/id6802821164",
+      "permanent": false
+    },
+    {
+      "source": "/download",
+      "destination": "https://apps.apple.com/gb/app/nutrio/id6802821164",
+      "permanent": false
+    }
+  ]
 }
