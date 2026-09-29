@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Nutrio+ | Links</title>
+    <meta name="description" content="Get Nutrio+ on the App Store, or visit the website." />
+    <meta name="theme-color" content="#479770" />
+    <link rel="icon" type="image/png" href="/public/nutri-app-icon.png" />
+    <link rel="apple-touch-icon" href="/public/nutri-app-icon.png" />
+    <link rel="canonical" href="https://nutrioplus.co.uk/links" />
+    <meta property="og:title" content="Nutrio+" />
+    <meta property="og:description" content="Snap a photo of your meal and it logs everything for you." />
+    <meta property="og:image" content="https://nutrioplus.co.uk/public/m-hero.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700;900&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        color-scheme: light dark;
+        --green-600: #479770;
+        --green-soft: #d9f2e5;
+        --cta: #10b981;
+        --bg: #f5faf7; --ink: #0d1a14; --muted: #5b6b63; --line: #e3ece7; --card: #ffffff;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root { --bg: #0b120f; --ink: #eef5f1; --muted: #9db0a6; --line: #1d2a23; --card: #131f19; --green-soft: #173024; }
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0; min-height: 100vh; min-height: 100dvh;
+        background: var(--bg); color: var(--ink);
+        font-family: Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+        -webkit-font-smoothing: antialiased;
+        display: flex; justify-content: center;
+        padding: max(48px, env(safe-area-inset-top)) 16px max(32px, env(safe-area-inset-bottom));
+      }
+      main { width: 100%; max-width: 420px; display: flex; flex-direction: column; align-items: center; text-align: center; }
+      .icon { width: 96px; height: 96px; border-radius: 22px; box-shadow: 0 8px 24px rgba(13, 26, 20, .14); }
+      h1 { font-size: 1.6rem; font-weight: 900; letter-spacing: -.03em; margin: 18px 0 6px; }
+      .handle { color: var(--muted); font-weight: 500; margin: 0 0 6px; }
+      .tag { color: var(--muted); margin: 0 0 28px; line-height: 1.5; }
+      nav { width: 100%; display: grid; gap: 12px; }
+      a.link {
+        display: flex; align-items: center; justify-content: center; gap: 10px;
+        min-height: 58px; padding: 14px 20px; border-radius: 16px;
+        font-weight: 700; font-size: 1.02rem; text-decoration: none;
+        background: var(--card); color: var(--ink); border: 1px solid var(--line);
+        transition: transform .15s ease, box-shadow .15s ease;
+      }
+      a.link.primary { background: var(--cta); color: #fff; border-color: transparent; }
+      a.link:hover { transform: translateY(-1px); box-shadow: 0 6px 18px rgba(13, 26, 20, .1); }
+      a.link:active { transform: scale(.98); }
+      a.link:focus-visible { outline: 3px solid var(--green-600); outline-offset: 3px; }
+      a.link svg { width: 20px; height: 20px; flex: none; }
+      .mascot { width: 150px; margin-top: 36px; opacity: .95; }
+      footer { margin-top: 20px; font-size: .85rem; color: var(--muted); }
+      @media (prefers-reduced-motion: reduce) { a.link { transition: none; } }
+    </style>
+  </head>
+  <body>
+    <main>
+      <img class="icon" src="/public/nutri-app-icon.png" alt="Nutrio+ app icon" width="96" height="96" />
+      <h1>Nutrio+</h1>
+      <p class="handle">@nutrioplus</p>
+      <p class="tag">Snap a photo of your meal and it logs everything for you.</p>
+      <nav aria-label="Links">
+        <a class="link primary" href="https://apps.apple.com/gb/app/nutrio/id6802821164">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.37 12.6c-.02-2.2 1.8-3.26 1.88-3.31-1.02-1.5-2.62-1.7-3.19-1.72-1.36-.14-2.65.8-3.34.8-.69 0-1.75-.78-2.88-.76-1.48.02-2.85.86-3.61 2.19-1.54 2.67-.39 6.62 1.11 8.79.73 1.06 1.6 2.25 2.74 2.21 1.1-.04 1.52-.71 2.85-.71 1.33 0 1.7.71 2.87.69 1.18-.02 1.93-1.08 2.65-2.15.84-1.23 1.18-2.42 1.2-2.48-.03-.01-2.3-.88-2.32-3.5zM14.18 6.13c.6-.74 1.01-1.76.9-2.78-.87.04-1.93.58-2.55 1.31-.56.65-1.05 1.69-.92 2.69.97.08 1.96-.49 2.57-1.22z"/></svg>
+          Download on the App Store
+        </a>
+        <a class="link" href="https://nutrioplus.co.uk/">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          Nutrio+ website
+        </a>
+      </nav>
+      <img class="mascot" src="/public/m-hero.png" alt="" width="150" height="119" />
+      <footer>iPhone · 3-day free trial</footer>
+    </main>
+  </body>
+</html>
